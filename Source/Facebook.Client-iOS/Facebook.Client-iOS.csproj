@@ -92,6 +92,7 @@
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\en.lproj\" />
     <Folder Include="Facebook.Client-iOS\Controls\ProfilePicture\" />
+    <Folder Include="Facebook.Client-iOS\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -133,7 +134,7 @@
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphLocation.cs">
       <Link>Facebook.Client\GraphLocation.cs</Link>
     </Compile>
-    <Compile Include="Facebook.Client-iOS\Extensions.cs" />
+    <Compile Include="Facebook.Client-iOS\Extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
