@@ -1,7 +1,7 @@
 using System;
 using MonoTouch.Foundation;
 
-namespace Facebook.Client.Extensions
+namespace Facebook.Client
 {
 	public static class StringExtensions
 	{

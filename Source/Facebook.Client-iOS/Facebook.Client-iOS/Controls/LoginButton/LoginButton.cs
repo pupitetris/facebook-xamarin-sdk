@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Drawing;
-using Facebook.Client.Extensions;
 
 namespace Facebook.Client.Controls
 {
