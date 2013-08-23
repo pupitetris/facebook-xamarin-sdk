@@ -90,4 +90,10 @@
     <None Include="Info.plist" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
+    <BundleResource Include="Resources\Images\FBLoginViewButton%402x.png" />
+    <BundleResource Include="Resources\Images\FBLoginViewButtonPressed.png" />
+    <BundleResource Include="Resources\Images\FBLoginViewButtonPressed%402x.png" />
+  </ItemGroup>
 </Project>
