@@ -12,7 +12,7 @@
     /// that reflects whether the user is currently authenticated. When a user logs in, it can automatically 
     /// retrieve their basic information.
     /// </remarks>
-    public partial sealed class LoginButton
+    public partial class LoginButton
     {
         #region Default Property Values
 
@@ -29,7 +29,7 @@
         #region Member variables
 
         private FacebookSessionClient facebookSessionClient;
-	private FacebookSession _currentSession;
+		private FacebookSession _currentSession;
 
         #endregion Member variables
 
@@ -114,7 +114,7 @@
         /// <summary>
         /// Gets the current active session.
         /// </summary>
-        public FacebookSession CurrentSession;
+        public FacebookSession CurrentSession
         {
             get { return this._currentSession; }
             private set { this._currentSession = value; this.UpdateSession(); }
