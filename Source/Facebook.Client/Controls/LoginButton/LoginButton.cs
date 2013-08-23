@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+	using Facebook;
 
     /// <summary>
     /// Represents a button control that can log in or log out the user when clicked.
@@ -157,7 +158,7 @@
 
         #region Implementation
 
-        private async void OnLoginButtonClicked(object sender, RoutedEventArgs e)
+        private async void OnLoginButtonClicked(object sender, EventArgs e)
         {
             if (this.CurrentSession == null)
             {
