@@ -90,6 +90,7 @@
     <Folder Include="Facebook.Client-iOS\Controls\" />
     <Folder Include="Facebook.Client-iOS\Controls\LoginButton\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\en.lproj\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -127,5 +128,6 @@
     <BundleResource Include="Resources\Images\FBLoginViewButton%402x.png" />
     <BundleResource Include="Resources\Images\FBLoginViewButtonPressed.png" />
     <BundleResource Include="Resources\Images\FBLoginViewButtonPressed%402x.png" />
+    <BundleResource Include="Resources\en.lproj\Localizable.strings" />
   </ItemGroup>
 </Project>
