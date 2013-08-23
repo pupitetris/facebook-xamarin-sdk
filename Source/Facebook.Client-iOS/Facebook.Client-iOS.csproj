@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Facebook.Client</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>FacebookClientiOS</AssemblyName>
+    <AssemblyName>FacebookClient</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
