@@ -101,6 +101,7 @@
     <Compile Include="..\Facebook.Client\Controls\LoginButton\LoginButton.cs">
       <Link>Facebook.Client\Controls\LoginButton\LoginButton.cs</Link>
     </Compile>
+    <Compile Include="Facebook.Client-iOS\Controls\LoginButton\LoginButton.cs" />
     <Compile Include="Facebook.Client-iOS\Controls\LoginButton\ShadowLabel.cs" />
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\LoginButton\Audience.cs">
       <Link>Facebook.Client\Controls\LoginButton\Audience.cs</Link>
