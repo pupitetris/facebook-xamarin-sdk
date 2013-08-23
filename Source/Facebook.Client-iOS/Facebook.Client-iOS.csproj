@@ -95,6 +95,7 @@
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\en.lproj\" />
     <Folder Include="Facebook.Client-iOS\Controls\ProfilePicture\" />
+    <Folder Include="Facebook.Client\Controls\Extensions\" />
     <Folder Include="Facebook.Client-iOS\Extensions\" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,9 @@
     </Compile>
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphLocation.cs">
       <Link>Facebook.Client\GraphLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\Extensions\EventExtensions.cs">
+      <Link>Facebook.Client\Controls\Extensions\EventExtensions.cs</Link>
     </Compile>
     <Compile Include="Facebook.Client-iOS\Extensions\StringExtensions.cs" />
   </ItemGroup>
