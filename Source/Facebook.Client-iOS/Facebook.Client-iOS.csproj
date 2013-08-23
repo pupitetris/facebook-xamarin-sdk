@@ -122,6 +122,7 @@
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\FacebookSessionClient.cs">
       <Link>Facebook.Client\FacebookSessionClient.cs</Link>
     </Compile>
+    <Compile Include="Facebook.Client-iOS\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
