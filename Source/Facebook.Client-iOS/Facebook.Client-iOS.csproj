@@ -91,6 +91,7 @@
     <Folder Include="Facebook.Client-iOS\Controls\LoginButton\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\en.lproj\" />
+    <Folder Include="Facebook.Client-iOS\Controls\ProfilePicture\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -121,6 +122,15 @@
     </Compile>
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\FacebookSessionClient.cs">
       <Link>Facebook.Client\FacebookSessionClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphUser.cs">
+      <Link>Facebook.Client\GraphUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphObject.cs">
+      <Link>Facebook.Client\GraphObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphLocation.cs">
+      <Link>Facebook.Client\GraphLocation.cs</Link>
     </Compile>
     <Compile Include="Facebook.Client-iOS\Extensions.cs" />
   </ItemGroup>
