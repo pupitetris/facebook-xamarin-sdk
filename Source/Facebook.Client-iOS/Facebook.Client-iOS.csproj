@@ -85,11 +85,42 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Facebook.Client\" />
+    <Folder Include="Facebook.Client-iOS\" />
+    <Folder Include="Facebook.Client-iOS\Controls\" />
+    <Folder Include="Facebook.Client-iOS\Controls\LoginButton\" />
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="..\Facebook.Client\Controls\LoginButton\LoginButton.cs">
+      <Link>Facebook.Client\Controls\LoginButton\LoginButton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\LoginButton\Audience.cs">
+      <Link>Facebook.Client\Controls\LoginButton\Audience.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\LoginButton\AuthenticationErrorEventArgs.cs">
+      <Link>Facebook.Client\Controls\LoginButton\AuthenticationErrorEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\LoginButton\FacebookSessionState.cs">
+      <Link>Facebook.Client\Controls\LoginButton\FacebookSessionState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\LoginButton\SessionStateChangedEventArgs.cs">
+      <Link>Facebook.Client\Controls\LoginButton\SessionStateChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\LoginButton\UserInfoChangedEventArgs.cs">
+      <Link>Facebook.Client\Controls\LoginButton\UserInfoChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\FacebookSession.cs">
+      <Link>Facebook.Client\FacebookSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\FacebookSessionClient.cs">
+      <Link>Facebook.Client\FacebookSessionClient.cs</Link>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
     <BundleResource Include="Resources\Images\FBLoginViewButton%402x.png" />
