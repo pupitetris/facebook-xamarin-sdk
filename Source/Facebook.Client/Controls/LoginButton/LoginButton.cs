@@ -30,7 +30,8 @@
         #region Member variables
 
         private FacebookSessionClient facebookSessionClient;
-		private FacebookSession _currentSession;
+		private string _applicationId = DefaultApplicationId;
+		private FacebookSession _currentSession = DefaultCurrentSession;
 
         #endregion Member variables
 
@@ -70,11 +71,14 @@
         /// <summary>
         /// Gets or sets the application ID to be used to open the session.
         /// </summary>
-	public string ApplicationId
-	{
-	    get;
-	    set { this.facebookSessionClient = string.IsNullOrWhiteSpace(value) ? null : new FacebookSessionClient(value); }
-	}
+		public string ApplicationId
+		{
+			get { return _applicationId; }
+	    	set { 
+				this._applicationId = value;
+				this.facebookSessionClient = string.IsNullOrWhiteSpace(value) ? null : new FacebookSessionClient(value); 
+			}
+		}
 
         #endregion ApplicationId
 
@@ -88,7 +92,7 @@
         /// permission to perform a publish operation, a default audience is selected as the publication ceiling for the application. This 
         /// enumerated value allows the application to select which audience to ask the user to grant publish permission for.
         /// </remarks>
-        public Audience DefaultAudience;
+        public Audience DefaultAudience = DefaultDefaultAudience;
 
         #endregion DefaultAudience
 
@@ -97,7 +101,7 @@
         /// <summary>
         /// Gets or sets the permissions to request.
         /// </summary>
-        public string Permissions;
+        public string Permissions = DefaultPermissions;
         
         #endregion Permissions
 
@@ -106,7 +110,7 @@
         /// <summary>
         /// Controls whether the user information is fetched when the session is opened. Default is true.
         /// </summary>
-        public bool FetchUserInfo;
+        public bool FetchUserInfo = DefaultFetchUserInfo;
         
         #endregion FetchUserInfo
 
@@ -118,7 +122,10 @@
         public FacebookSession CurrentSession
         {
             get { return this._currentSession; }
-            private set { this._currentSession = value; this.UpdateSession(); }
+            private set { 
+				this._currentSession = value;
+				this.UpdateSession(); 
+			}
         }
 
         #endregion CurrentSession
@@ -128,7 +135,7 @@
         /// <summary>
         /// Gets the current logged in user.
         /// </summary>
-        public GraphUser CurrentUser;
+        public GraphUser CurrentUser = DefaultCurrentUser;
 
         #endregion CurrentUser
 
@@ -137,7 +144,7 @@
         /// <summary>
         /// Gets or sets a value that represents the degree to which the corners of a Border are rounded. 
         /// </summary>
-        public float CornerRadius;
+        public float CornerRadius = DefaultCornerRadius;
 
         #endregion CornerRadius
 
@@ -232,6 +239,22 @@
         {
             this.UpdateButtonCaption();
         }
+
+		
+		private string LogInText () {
+			return "Log in with Facebook".t ();
+		}
+
+		private string LogOutText () {
+			return "Log out".t ();
+		}
+
+		private void UpdateButtonCaption ()
+		{
+			string caption = this.CurrentSession == null ? this.LogInText () : this.LogOutText ();
+
+			this.UpdateButtonWithCaption (caption);
+		}
 
         #endregion Implementation
     }
