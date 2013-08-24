@@ -14,6 +14,7 @@ namespace Facebook.Client.Controls
 		private const float ButtonPaddingWidth = 12.0;
 
 		private SizeF ButtonSize;
+		private UILabel Label;
 		private UIButton Button;
 
 		public LoginButton () : base ()
@@ -40,16 +41,55 @@ namespace Facebook.Client.Controls
 
 			// Compute the text size to figure out the overall size of the button
 			UIFont font = UIFont.FromName ("HelveticaNeue-Bold", 14.0);
-			//float textSizeWidth = Math.Max (this.LogInText, 
-			//font.Set
+			float textSizeWidth = Math.Max (new NSString (this.LogInText ()).StringSize (font).Width,
+			                               	new NSString (this.LogOutText ()).StringSize (font).Width);
+
+			// We make the button big enough to hold the image, the text, the padding to the right of the f and the end cap
+			this.ButtonSize = new SizeF (image.Size.Width + textSizeWidth + ButtonPaddingWidth + ButtonEndCapWidth, image.Size.Height);
+
+			// add a label that will appear over the button
+			this.Label = new ShadowLabel ();
+			this.Label.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
+			this.Label.TextAlignment = UITextAlignment.Center;
+			this.Label.BackgroundColor = UIColor.Clear;
+			this.Label.Font = font;
+			this.Label.TextColor = UIColor.White;
+			this.AddSubview (this.Label);
+
+			// We force our height to be the same as the image, but we will let someone make us wider
+			// than the default image.
+			float width = Math.Max (this.Frame.Size.Width, this.ButtonSize.Width);
+			RectangleF frame = new RectangleF (this.Frame.X, this.Frame.Y, width, image.Size.Height);
+			this.Frame = frame;
+
+			RectangleF buttonFrame = new RectangleF (0, 0, width, image.Size.Height);
+			this.Button.Frame = buttonFrame;
+
+			// This needs to start at an x just to the right of the f in the image, the -1 on both x and y is to account for shadow in the image
+			this.Label.Frame = new RectangleF (image.Size.Width - ButtonPaddingWidth - 1, -1, 
+			                                   width - (image.Size.Width - ButtonPaddingWidth) - ButtonEndCapWidth, image.Size.Width);
+			this.BackgroundColor = UIColor.Clear;
+
+			if (this.CurrentSession != null) {
+				if (this.FetchUserInfo) {
+					this.FetchMeInfo ();
+				}
+				this.ConfigureViewForStateLoggedIn (true);
+			} else {
+				this.ConfigureViewForStateLoggedIn (false);
+			}
+		}
+
+		private SizeF SizeThatFits () {
+			return new SizeF (this.ButtonSize);
 		}
 
 		public void ButtonPressed (object sender, EventArgs e) {
 
 		}
-		
-		private string LogInText () {
-			var caption = this.CurrentSession == null? 
+
+		public void UpdateButtonWithCaption (string caption) {
+			this.Label.Text = caption;
 		}
 	}
 }
