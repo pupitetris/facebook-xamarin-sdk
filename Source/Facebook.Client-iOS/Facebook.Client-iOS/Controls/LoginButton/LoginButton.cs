@@ -23,7 +23,7 @@ namespace Facebook.Client.Controls
 			this.ClipsToBounds = true;
 
 			this.Button = new UIButton (UIButtonType.Custom);
-			this.Button.TouchUpInside += ButtonPressed;
+			this.Button.TouchUpInside += OnLoginButtonClicked;
 			this.Button.HorizontalAlignment = UIControlContentHorizontalAlignment.Fill;
 			this.Button.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
 
@@ -74,18 +74,15 @@ namespace Facebook.Client.Controls
 				if (this.FetchUserInfo) {
 					this.FetchMeInfo ();
 				}
-				this.ConfigureViewForStateLoggedIn (true);
 			} else {
-				this.ConfigureViewForStateLoggedIn (false);
+				this.CurrentUser = null;
 			}
+
+			this.UpdateButtonCaption ();
 		}
 
 		private SizeF SizeThatFits () {
 			return new SizeF (this.ButtonSize);
-		}
-
-		public void ButtonPressed (object sender, EventArgs e) {
-
 		}
 
 		public void UpdateButtonWithCaption (string caption) {
