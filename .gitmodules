@@ -1,3 +1,0 @@
-[submodule "facebook-winclient-sdk"]
-	path = facebook-winclient-sdk
-	url = https://github.com/facebook-csharp-sdk/facebook-winclient-sdk.git

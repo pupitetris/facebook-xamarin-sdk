@@ -196,7 +196,7 @@
                 {
                     FacebookClient client = new FacebookClient(session.AccessToken);
 
-                    dynamic result = await client.GetTaskAsync("me");
+                    object result = await client.GetTaskAsync("me");
                     this.CurrentUser = new GraphUser(result);
                     var userInfo = new UserInfoChangedEventArgs(this.CurrentUser);
                     this.UserInfoChanged.RaiseEvent(this, userInfo);
