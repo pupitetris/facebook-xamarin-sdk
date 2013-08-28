@@ -72,7 +72,7 @@ namespace Facebook.Client.Controls
 
 			if (this.CurrentSession != null) {
 				if (this.FetchUserInfo) {
-					this.FetchMeInfo ();
+					this.LogIn();
 				}
 			} else {
 				this.CurrentUser = null;
