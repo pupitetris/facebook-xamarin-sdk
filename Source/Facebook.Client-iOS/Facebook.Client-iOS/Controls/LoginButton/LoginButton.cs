@@ -12,9 +12,9 @@ namespace Facebook.Client.Controls
 		public object ParentUI { get; set; }
 
 		// The design calls for 16 pixels of space on the right edge of the button
-		private const float ButtonEndCapWidth = 16.0;
+		private const float ButtonEndCapWidth = 16.0f;
 		// The button has a 12 pixel buffer to the right of the f logo
-		private const float ButtonPaddingWidth = 12.0;
+		private const float ButtonPaddingWidth = 12.0f;
 
 		private SizeF ButtonSize;
 		private UILabel Label;
@@ -34,7 +34,7 @@ namespace Facebook.Client.Controls
 
 			// We want to make sure that when we stretch the image, it includes the curved edges and drop shadow
 			// We inset enough pixels to make sure that happens
-			UIEdgeInsets imageInsets = new UIEdgeInsets (4.0, 40.0, 4.0, 4.0);
+			UIEdgeInsets imageInsets = new UIEdgeInsets (4.0f, 40.0f, 4.0f, 4.0f);
 
 			UIImage image = UIImage.FromBundle ("Images/FBLoginViewButton").CreateResizableImage (imageInsets);
 			this.Button.SetBackgroundImage (image, UIControlState.Normal);
@@ -45,7 +45,7 @@ namespace Facebook.Client.Controls
 			this.AddSubview (this.Button);
 
 			// Compute the text size to figure out the overall size of the button
-			UIFont font = UIFont.FromName ("HelveticaNeue-Bold", 14.0);
+			UIFont font = UIFont.FromName ("HelveticaNeue-Bold", 14.0f);
 			float textSizeWidth = Math.Max (new NSString (this.LogInText ()).StringSize (font).Width,
 			                               	new NSString (this.LogOutText ()).StringSize (font).Width);
 

@@ -14,7 +14,7 @@ namespace Facebook.Client.Controls
 		public void DrawTextInRect (RectangleF rect) 
 		{
 			SizeF myShadowOffset = new SizeF (0, -1);
-			float[] myColorValues = {0, 0, 0, 0.3};
+			float[] myColorValues = {0, 0, 0, 0.3f};
 
 			using (CGContext myContext = UIGraphics.GetCurrentContext ())
 			{

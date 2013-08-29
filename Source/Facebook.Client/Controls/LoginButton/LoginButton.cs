@@ -22,8 +22,8 @@
         private const string DefaultPermissions = "";
         private const bool DefaultFetchUserInfo = true;
         private const FacebookSession DefaultCurrentSession = null;
-        private const FacebookSession DefaultCurrentUser = null;
-        private static readonly float DefaultCornerRadius = 0.0;
+        private const GraphUser DefaultCurrentUser = null;
+        private static readonly float DefaultCornerRadius = 0.0f;
 
         #endregion Default Property Values
 
