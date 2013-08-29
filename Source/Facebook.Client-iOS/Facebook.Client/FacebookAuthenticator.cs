@@ -14,7 +14,7 @@ namespace Facebook.Client
 			InitUI ();
 		}
 
-		public async Task<Account> AuthenticateAsync ()
+		public Task<Account> AuthenticateAsync ()
 		{
 			TaskCompletionSource<Account> tcs = new TaskCompletionSource<Account>();
 
