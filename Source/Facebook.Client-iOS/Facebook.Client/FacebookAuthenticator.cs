@@ -10,6 +10,8 @@ namespace Facebook.Client
 		{
 			this.AllowCancel = true;
 			this.ClearCookiesBeforeLogin = false;
+
+			InitUI ();
 		}
 
 		public async Task<Account> AuthenticateAsync ()
