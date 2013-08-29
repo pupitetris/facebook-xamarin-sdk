@@ -66,7 +66,7 @@
         /// </summary>
 		public string ApplicationId
 		{
-			get { return _applicationId; }
+			get { return this._applicationId; }
 	    	set { 
 				this._applicationId = value;
 				this.facebookSessionClient = string.IsNullOrWhiteSpace(value) ? null : new FacebookSessionClient(value); 
