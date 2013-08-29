@@ -77,13 +77,14 @@ namespace Facebook.Client.Controls
 
 			if (this.CurrentSession != null) {
 				if (this.FetchUserInfo) {
-					this.LogIn();
+					this.LogIn ().ContinueWith (t => {
+						this.UpdateButtonCaption ();
+					});
 				}
 			} else {
 				this.CurrentUser = null;
+				this.UpdateButtonCaption ();
 			}
-
-			this.UpdateButtonCaption ();
 		}
 
 		private SizeF SizeThatFits () {
