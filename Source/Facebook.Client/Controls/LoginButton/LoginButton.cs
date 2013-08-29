@@ -35,15 +35,6 @@
 
         #endregion Member variables
 
-#if !(__MOBILE__)
-        /// <summary>
-        /// Initializes a new instance of the LoginButton class. 
-        /// </summary>
-        public LoginButton()
-        {
-        }
-#endif
-
         #region Events
 
         /// <summary>
@@ -178,13 +169,6 @@
                 this.LogOut();
             }
         }
-
-#if !(__MOBILE__)
-		// For winclients
-		private Task<FacebookSession> SessionLogInAsync (string permissions) {
-			return this.facebookSessionClient.LoginAsync(permissions);
-		}
-#endif
 
         private async Task LogIn(string permissions = null)
         {
