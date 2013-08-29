@@ -23,7 +23,7 @@ namespace Facebook.Client
 			var controller = this.ParentUI as UIViewController;
 			if (controller != null)
 			{
-				controller.PresentModalViewController (this.GetUI (), true);
+				controller.PresentViewController (this.GetUI (), true);
 				return;
 			}
 
@@ -43,7 +43,7 @@ namespace Facebook.Client
 			var controller = this.ParentUI as UIViewController;
 
 			if (controller != null) {
-				controller.DismissModalViewControllerAnimated (true);
+				controller.DismissViewController (true);
 				return;
 			}
 
