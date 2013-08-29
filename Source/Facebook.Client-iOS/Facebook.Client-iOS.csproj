@@ -153,6 +153,7 @@
     </Compile>
     <Compile Include="Facebook.Client-iOS\FacebookAuthenticator.cs" />
     <Compile Include="Facebook.Client\FacebookAuthenticator.cs" />
+    <Compile Include="Facebook.Client-iOS\FacebookSessionClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
