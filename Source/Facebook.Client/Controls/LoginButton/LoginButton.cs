@@ -35,12 +35,14 @@
 
         #endregion Member variables
 
+#if !(__MOBILE__)
         /// <summary>
         /// Initializes a new instance of the LoginButton class. 
         /// </summary>
         public LoginButton()
         {
         }
+#endif
 
         #region Events
 
