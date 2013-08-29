@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace Facebook.Client.Controls
 {
 	public partial class LoginButton : UIView
 	{
+		public object ParentUI { get; set; }
+
 		// The design calls for 16 pixels of space on the right edge of the button
 		private const float ButtonEndCapWidth = 16.0;
 		// The button has a 12 pixel buffer to the right of the f logo
@@ -19,6 +22,8 @@ namespace Facebook.Client.Controls
 
 		public LoginButton () : base ()
 		{
+			this.ParentUI = null;
+
 			this.AutosizesSubviews = true;
 			this.ClipsToBounds = true;
 
@@ -87,6 +92,11 @@ namespace Facebook.Client.Controls
 
 		public void UpdateButtonWithCaption (string caption) {
 			this.Label.Text = caption;
+		}
+
+		private Task<FacebookSession> SessionLogInAsync (string permissions) {
+			this.facebookSessionClient.ParentUI = this.ParentUI ?? this;
+			return this.facebookSessionClient.LoginAsync(permissions);
 		}
 	}
 }

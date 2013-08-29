@@ -177,6 +177,13 @@
             }
         }
 
+#if !(__MOBILE__)
+		// For winclients
+		private Task<FacebookSession> SessionLogInAsync (string permissions) {
+			return this.facebookSessionClient.LoginAsync(permissions);
+		}
+#endif
+
         private async Task LogIn(string permissions = null)
         {
             try
@@ -185,7 +192,7 @@
 
                 // TODO: using Permissions for the time being until we decide how 
                 // to handle separate ReadPermissions and PublishPermissions
-                var session = await this.facebookSessionClient.LoginAsync(permissions ?? this.Permissions);
+				var session = await this.SessionLogInAsync (permissions ?? this.Permissions);
 
                 // initialize current session
                 this.CurrentSession = session;
