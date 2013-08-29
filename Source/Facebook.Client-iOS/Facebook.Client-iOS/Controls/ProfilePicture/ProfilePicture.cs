@@ -8,7 +8,7 @@ namespace Facebook.Client.Controls
 	public partial class ProfilePicture: UIView
 	{
 		private UIImageView ImageView;
-		private static float ScreenScaleFactor = 0.0;
+		private static float ScreenScaleFactor = 0.0f;
 		private HttpHelper connection = null;
 
 		/// <summary>
@@ -59,7 +59,7 @@ namespace Facebook.Client.Controls
 
 		private void RefreshImage () {
 			if (string.IsNullOrEmpty (this.ProfileId)) {
-				if (this.connection) {
+				if (this.connection != null) {
 					this.connection.CancelAsync ();
 				}
 
