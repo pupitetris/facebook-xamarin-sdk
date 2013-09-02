@@ -167,6 +167,12 @@
     <BundleResource Include="Resources\Images\FBLoginViewButtonPressed.png" />
     <BundleResource Include="Resources\Images\FBLoginViewButtonPressed%402x.png" />
     <BundleResource Include="Resources\en.lproj\Localizable.strings" />
+    <BundleResource Include="..\Facebook.Client\Images\fb_blank_profile_portrait.png">
+      <Link>Resources\Images\fb_blank_profile_portrait.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Facebook.Client\Images\fb_blank_profile_square.png">
+      <Link>Resources\Images\fb_blank_profile_square.png</Link>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">
