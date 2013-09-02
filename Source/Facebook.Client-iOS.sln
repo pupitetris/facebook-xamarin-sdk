@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Client-iOS", "Facebook.Client-iOS\Facebook.Client-iOS.csproj", "{C3939C90-1679-4928-A296-794CDC64EFC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicApp-iOS", "..\Samples\BasicApp-iOS\BasicApp-iOS.csproj", "{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -25,6 +27,18 @@ Global
 		{C3939C90-1679-4928-A296-794CDC64EFC3}.Release|iPhone.Build.0 = Release|iPhone
 		{C3939C90-1679-4928-A296-794CDC64EFC3}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{C3939C90-1679-4928-A296-794CDC64EFC3}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Debug|iPhone.Build.0 = Debug|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Release|iPhone.ActiveCfg = Release|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Release|iPhone.Build.0 = Release|iPhone
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Facebook.Client-iOS\Facebook.Client-iOS.csproj
