@@ -41,6 +41,6 @@ Global
 		{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Facebook.Client-iOS\Facebook.Client-iOS.csproj
+		StartupItem = ..\Samples\BasicApp-iOS\BasicApp-iOS.csproj
 	EndGlobalSection
 EndGlobal
