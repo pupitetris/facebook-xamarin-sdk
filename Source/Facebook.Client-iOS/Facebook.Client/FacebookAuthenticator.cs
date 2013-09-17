@@ -6,10 +6,13 @@ namespace Facebook.Client
 {
 	public partial class FacebookAuthenticator : OAuth2Authenticator
 	{
+		private Uri startUri;
+
 		public FacebookAuthenticator (string appId, Uri startUri, Uri endUri) : base (appId, "", startUri, endUri)
 		{
 			this.AllowCancel = true;
 			this.ClearCookiesBeforeLogin = false;
+			this.startUri = startUri;
 
 			InitUI ();
 		}
@@ -40,6 +43,13 @@ namespace Facebook.Client
 			// Platform-specific UI routine.
 			this.PresentUI ();
 
+			return tcs.Task;
+		}
+
+		public override Task<Uri> GetInitialUrlAsync ()
+		{
+			var tcs = new TaskCompletionSource<Uri> ();
+			tcs.SetResult (this.startUri);
 			return tcs.Task;
 		}
 	}
