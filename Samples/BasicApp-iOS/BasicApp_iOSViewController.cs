@@ -32,7 +32,7 @@ namespace BasicAppiOS
 
 			MyLoginButton.ParentUI = this;
 			MyLoginButton.SessionStateChanged += this.OnSessionStateChanged;
-			MyLoginButton.ApplicationId = "427365490674294";
+			MyLoginButton.ApplicationId = "98206523058";
 		}
 
 		private void OnSessionStateChanged(object sender, Facebook.Client.Controls.SessionStateChangedEventArgs e)
