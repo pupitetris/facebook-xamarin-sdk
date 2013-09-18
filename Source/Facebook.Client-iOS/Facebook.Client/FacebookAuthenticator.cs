@@ -10,7 +10,7 @@ namespace Facebook.Client
 		private Uri startUri;
 		public Uri CallbackUri { get; private set; }
 
-		public FacebookAuthenticator (string appId, Uri startUri, Uri endUri) : base (appId, "", startUri, endUri)
+		public FacebookAuthenticator (string appId, Uri startUri, Uri endUri) : base (appId, "", new Uri (startUri.GetLeftPart (UriPartial.Path)), endUri)
 		{
 			this.AllowCancel = true;
 			this.ClearCookiesBeforeLogin = false;
