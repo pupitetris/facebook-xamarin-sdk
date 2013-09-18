@@ -1,12 +1,14 @@
 using System;
 using System.Threading.Tasks;
 using Xamarin.Auth;
+using System.Collections.Generic;
 
 namespace Facebook.Client
 {
 	public partial class FacebookAuthenticator : OAuth2Authenticator
 	{
 		private Uri startUri;
+		public Uri CallbackUri { get; private set; }
 
 		public FacebookAuthenticator (string appId, Uri startUri, Uri endUri) : base (appId, "", startUri, endUri)
 		{
@@ -51,6 +53,12 @@ namespace Facebook.Client
 			var tcs = new TaskCompletionSource<Uri> ();
 			tcs.SetResult (this.startUri);
 			return tcs.Task;
+		}
+
+		protected override void OnRedirectPageLoaded (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment)
+		{
+			base.OnRedirectPageLoaded (url, query, fragment);
+			this.CallbackUri = url;
 		}
 	}
 }
