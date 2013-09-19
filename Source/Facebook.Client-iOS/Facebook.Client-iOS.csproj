@@ -152,13 +152,17 @@
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\FacebookSessionIsolatedStorageCacheProvider.cs">
       <Link>Facebook.Client\FacebookSessionIsolatedStorageCacheProvider.cs</Link>
     </Compile>
+    <Compile Include="..\Facebook.Client\FacebookAuthenticator.cs">
+      <Link>Facebook.Client\FacebookAuthenticator.cs</Link>
+    </Compile>
     <Compile Include="Facebook.Client-iOS\FacebookAuthenticator.cs" />
-    <Compile Include="Facebook.Client\FacebookAuthenticator.cs" />
     <Compile Include="Facebook.Client-iOS\FacebookSessionClient.cs" />
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\ProfilePicture\CropMode.cs">
       <Link>Facebook.Client\Controls\ProfilePicture\CropMode.cs</Link>
     </Compile>
-    <Compile Include="Facebook.Client\Controls\ProfilePicture\ProfilePicture.cs" />
+    <Compile Include="..\Facebook.Client\Controls\ProfilePicture\ProfilePicture.cs">
+      <Link>Facebook.Client\Controls\ProfilePicture\ProfilePicture.cs</Link>
+    </Compile>
     <Compile Include="Facebook.Client-iOS\Controls\ProfilePicture\ProfilePicture.cs" />
   </ItemGroup>
   <ItemGroup>
