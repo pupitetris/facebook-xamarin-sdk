@@ -9,6 +9,7 @@ namespace BasicAppiOS
 	public partial class BasicApp_iOSViewController : UIViewController
 	{
 		protected LoginButton MyLoginButton;
+		protected ProfilePicture MyProfilePicture;
 
 		public BasicApp_iOSViewController () : base ("BasicApp_iOSViewController", null)
 		{
@@ -28,11 +29,15 @@ namespace BasicAppiOS
 			
 			// Perform any additional setup after loading the view, typically from a nib.
 			MyLoginButton = new LoginButton ();
-			LoginButtonCont.AddSubview (MyLoginButton);
-
 			MyLoginButton.ParentUI = this;
 			MyLoginButton.SessionStateChanged += this.OnSessionStateChanged;
 			MyLoginButton.ApplicationId = "98206523058";
+			LoginButtonCont.AddSubview (MyLoginButton);
+			MyLoginButton.Frame = new RectangleF (0, 0, LoginButtonCont.Frame.Width, LoginButtonCont.Frame.Height);
+
+			MyProfilePicture = new ProfilePicture ();
+			ProfilePictureCont.AddSubview (MyProfilePicture);
+			MyProfilePicture.Frame = new RectangleF (0, 0, ProfilePictureCont.Frame.Width, ProfilePictureCont.Frame.Height);
 		}
 
 		private void OnSessionStateChanged(object sender, Facebook.Client.Controls.SessionStateChangedEventArgs e)
@@ -42,6 +47,8 @@ namespace BasicAppiOS
 			switch (e.SessionState) {
 			case FacebookSessionState.Closed:
 				msg = "Closed.";
+				this.MyProfilePicture.AccessToken = null;
+				this.MyProfilePicture.ProfileId = null;
 				break;
 			case FacebookSessionState.ClosedLoginFailed:
 				msg = "Logout failed.";
@@ -54,6 +61,8 @@ namespace BasicAppiOS
 				break;
 			case FacebookSessionState.Opened:
 				msg = "Opened. Welcome!";
+				this.MyProfilePicture.AccessToken = this.MyLoginButton.CurrentSession.AccessToken;
+				this.MyProfilePicture.ProfileId = this.MyLoginButton.CurrentSession.FacebookId;
 				break;
 			case FacebookSessionState.OpenedTokenUpdated:
 				msg = "Opened with stored session. Welcome!";

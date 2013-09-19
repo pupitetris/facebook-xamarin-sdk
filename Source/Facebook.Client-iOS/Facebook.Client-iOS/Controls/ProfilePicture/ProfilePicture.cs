@@ -17,12 +17,14 @@ namespace Facebook.Client.Controls
 		public ProfilePicture()
 		{
 			this.ImageView = new UIImageView (this.Bounds);
-			this.ImageView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+			this.ImageView.AutoresizingMask = UIViewAutoresizing.FlexibleDimensions;
 
 			this.AutosizesSubviews = true;
 			this.ClipsToBounds = true;
 
 			this.AddSubview (this.ImageView);
+
+			this.LoadPicture ();
 		}
 
 		// Lets us catch resizes of the control, or any outer layout, allowing us to potentially
@@ -58,7 +60,7 @@ namespace Facebook.Client.Controls
 		}
 
 		private void RefreshImage () {
-			if (string.IsNullOrEmpty (this.ProfileId)) {
+			if (!string.IsNullOrEmpty (this.ProfileId)) {
 				if (this.connection != null) {
 					this.connection.CancelAsync ();
 				}

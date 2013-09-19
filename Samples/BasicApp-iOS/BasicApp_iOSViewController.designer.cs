@@ -14,12 +14,20 @@ namespace BasicAppiOS
 	{
 		[Outlet]
 		MonoTouch.UIKit.UIView LoginButtonCont { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView ProfilePictureCont { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (LoginButtonCont != null) {
 				LoginButtonCont.Dispose ();
 				LoginButtonCont = null;
+			}
+
+			if (ProfilePictureCont != null) {
+				ProfilePictureCont.Dispose ();
+				ProfilePictureCont = null;
 			}
 		}
 	}
