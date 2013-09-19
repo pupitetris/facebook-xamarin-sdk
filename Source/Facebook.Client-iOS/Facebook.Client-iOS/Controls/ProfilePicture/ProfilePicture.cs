@@ -68,12 +68,15 @@ namespace Facebook.Client.Controls
 				this.connection = new HttpHelper (this.ImageSource);
 				this.connection.OpenReadTaskAsync ().ContinueWith (t => {
 					if (t.IsCompleted) {
-						using (var stream = t.Result) {
-							using (var data = NSData.FromStream (stream)) {
-								this.ImageView.Image = UIImage.LoadFromData (data);
-								this.EnsureImageViewContentMode ();
+						InvokeOnMainThread(() => {
+							using (var stream = t.Result) {
+								using (var data = NSData.FromStream (stream)) {
+
+									this.ImageView.Image = UIImage.LoadFromData (data);
+									this.EnsureImageViewContentMode ();
+								}
 							}
-						}
+						});
 					}
 					this.connection = null;
 				});
