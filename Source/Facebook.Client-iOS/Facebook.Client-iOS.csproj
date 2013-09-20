@@ -101,6 +101,7 @@
     <Folder Include="Facebook.Client\Controls\Extensions\" />
     <Folder Include="Facebook.Client-iOS\Extensions\" />
     <Folder Include="Facebook.Client\Controls\ProfilePicture\" />
+    <Folder Include="Facebook.Client\Controls\Picker\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -164,6 +165,21 @@
       <Link>Facebook.Client\Controls\ProfilePicture\ProfilePicture.cs</Link>
     </Compile>
     <Compile Include="Facebook.Client-iOS\Controls\ProfilePicture\ProfilePicture.cs" />
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\Picker\AlphaKeyGroup.cs">
+      <Link>Facebook.Client\Controls\Picker\AlphaKeyGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client-WindowsStore\Controls\FriendPicker\SortedLocaleGrouping.cs">
+      <Link>Facebook.Client\Controls\Picker\SortedLocaleGrouping.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\Picker\PickerSelectionMode.cs">
+      <Link>Facebook.Client\Controls\Picker\PickerSelectionMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\Picker\PickerItem.cs">
+      <Link>Facebook.Client\Controls\Picker\PickerItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Facebook.Client\Controls\Picker\Picker.cs">
+      <Link>Facebook.Client\Controls\Picker\Picker.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
