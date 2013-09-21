@@ -180,6 +180,15 @@
     <Compile Include="..\Facebook.Client\Controls\Picker\Picker.cs">
       <Link>Facebook.Client\Controls\Picker\Picker.cs</Link>
     </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\DataItemRetrievedEventArgs.cs">
+      <Link>Facebook.Client\Controls\DataItemRetrievedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\DataReadyEventArgs.cs">
+      <Link>Facebook.Client\Controls\DataReadyEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\LoadFailedEventArgs.cs">
+      <Link>Facebook.Client\Controls\LoadFailedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Facebook.Client\Controls\RoutingStrategy.cs">
       <Link>Facebook.Client\Controls\RoutingStrategy.cs</Link>
     </Compile>
