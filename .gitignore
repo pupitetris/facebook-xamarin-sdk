@@ -49,3 +49,7 @@ NuGet.exe
 .DS_Store
 *.userprefs
 
+# Emacs
+*~
+[#]*[#]
+.\#*
