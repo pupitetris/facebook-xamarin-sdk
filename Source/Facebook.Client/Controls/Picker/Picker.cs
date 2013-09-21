@@ -7,41 +7,26 @@
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Controls;
-    using Microsoft.Phone.Controls;
 
     /// <summary>
     /// Displays a list of selectable items with optional multi-selection.
     /// </summary>
-    [TemplatePart(Name = PartListSelector, Type = typeof(LongListSelector))]
-    public abstract class Picker<T> : Control
+    public abstract partial class Picker<T>
         where T : class
     {
-        #region Part Definitions
-
-        private const string PartListSelector = "PART_ListSelector";
-
-        #endregion Part Definitions
-
         #region Default Property Values
 
         private const PickerSelectionMode DefaultSelectionMode = PickerSelectionMode.Multiple;
 
         #endregion Default Property Values
 
-        #region Member variables
-
-        private LongListSelector longListSelector;
-
-        #endregion Member variables
-
         /// <summary>
         /// Initializes a new instance of the Picker class.
         /// </summary>
         public Picker()
         {
-            this.SetValue(ItemsProperty, new ObservableCollection<T>());
-            this.SetValue(SelectedItemsProperty, new ObservableCollection<T>());
+			Items = new ObservableCollection<T> ();
+			SelectedItems = new ObservableCollection<T> ();
         }
 
         #region Events
