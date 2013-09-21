@@ -180,6 +180,18 @@
     <Compile Include="..\Facebook.Client\Controls\Picker\Picker.cs">
       <Link>Facebook.Client\Controls\Picker\Picker.cs</Link>
     </Compile>
+    <Compile Include="..\Facebook.Client\Controls\RoutingStrategy.cs">
+      <Link>Facebook.Client\Controls\RoutingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Facebook.Client\Controls\RoutedEvent.cs">
+      <Link>Facebook.Client\Controls\RoutedEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\Facebook.Client\Controls\RoutedEventArgs.cs">
+      <Link>Facebook.Client\Controls\RoutedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Facebook.Client\Controls\SelectionChangedEventArgs.cs">
+      <Link>Facebook.Client\Controls\SelectionChangedEventArgs.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
