@@ -60,23 +60,15 @@
         /// <summary>
         /// Gets or sets the selection behavior of the control. 
         /// </summary>
-        public PickerSelectionMode SelectionMode
-        {
-            get { return (PickerSelectionMode)GetValue(SelectionModeProperty); }
-            set { this.SetValue(SelectionModeProperty, value); }
-        }
 
-        /// <summary>
-        /// Identifies the SelectionMode dependency property.
-        /// </summary>
-        public static readonly DependencyProperty SelectionModeProperty =
-            DependencyProperty.Register("SelectionMode", typeof(PickerSelectionMode), typeof(Picker<T>), new PropertyMetadata(DefaultSelectionMode, OnSelectionModeProperyChanged));
-
-        private static void OnSelectionModeProperyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var picker = (Picker<T>)d;
-            picker.ClearSelection();          
-        }
+		private PickerSelectionMode _selectionMode;
+		public PickerSelectionMode SelectionMode { 
+			get { return this._selectionMode; } 
+			set { 
+				this._selectionMode = value;
+				this.ClearSelection ();
+			}
+		}
 
         #endregion SelectionMode
 
@@ -85,17 +77,7 @@
         /// <summary>
         /// Gets the list of currently selected items for the FriendPicker control.
         /// </summary>
-        public ObservableCollection<T> Items
-        {
-            get { return (ObservableCollection<T>)this.GetValue(ItemsProperty); }
-            private set { this.SetValue(ItemsProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifies the Items dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register("Items", typeof(ObservableCollection<T>), typeof(Picker<T>), null);
+		public ObservableCollection<T> Items { get; private set; }
 
         #endregion Items
 
@@ -104,17 +86,7 @@
         /// <summary>
         /// Gets the currently selected item for the Picker control.
         /// </summary>
-        public T SelectedItem
-        {
-            get { return (T)GetValue(SelectedItemProperty); }
-            private set { SetValue(SelectedItemProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifies the SelectedItem dependency property.
-        /// </summary>
-        public static readonly DependencyProperty SelectedItemProperty =
-            DependencyProperty.Register("SelectedItem", typeof(T), typeof(Picker<T>), new PropertyMetadata(null));
+		public T SelectedItem { get; private set; }
 
         #endregion SelectedItem
 
@@ -123,17 +95,7 @@
         /// <summary>
         /// Gets the list of currently selected items for the FriendPicker control.
         /// </summary>
-        public ObservableCollection<T> SelectedItems
-        {
-            get { return (ObservableCollection<T>)this.GetValue(SelectedItemsProperty); }
-            private set { this.SetValue(SelectedItemsProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifies the SelectedItems dependency property.
-        /// </summary>
-        public static readonly DependencyProperty SelectedItemsProperty =
-            DependencyProperty.Register("SelectedItems", typeof(ObservableCollection<T>), typeof(Picker<T>), null);
+		public ObservableCollection<T> SelectedItems { get; private set; }
 
         #endregion SelectedItems
 
@@ -146,6 +108,7 @@
         /// terms, this means the method is called just before a UI element displays in your app. Override this method to influence the 
         /// default post-template logic of a class. 
         /// </summary>
+		/*
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -160,8 +123,9 @@
                     this.SetDataSource(this.GetDesignTimeData());
                 }
             }
-        }
+        }*/
 
+		// TODO: implement platform-dependent parts.
         protected void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.SelectionMode == PickerSelectionMode.None)
@@ -169,6 +133,7 @@
                 return;
             }
 
+			/*
             if (this.longListSelector == null)
             {
                 return;
@@ -178,6 +143,7 @@
             {
                 return;
             }
+            */
 
             IList<object> removedItems;
             IList<object> addedItems;
@@ -194,6 +160,7 @@
             }
             else
             {
+				/*
                 // Multiple selection mode
                 var selectedItem = this.longListSelector.SelectedItem as PickerItem<T>;
                 addedItems = selectedItem.IsSelected ? new object[0] : new object[] { selectedItem };
@@ -201,6 +168,7 @@
 
                 // Reset selected item to null (no selection)
                 this.longListSelector.SelectedItem = null;
+                */
             }
 
             foreach (var item in removedItems)
@@ -225,10 +193,12 @@
                 new SelectionChangedEventArgs(removedItems.Select(item => ((PickerItem<T>)item).Item).ToList(), addedItems.Select(item => ((PickerItem<T>)item).Item).ToList()));
         }
 
+		// TODO: platform-dependant version.
         protected void ClearSelection()
         {
             this.SelectedItems.Clear();
 
+			/*
             if (this.longListSelector != null && this.longListSelector.ItemsSource != null)
             {
                 var source = this.longListSelector.ItemsSource as IEnumerable<PickerItem<T>>;
@@ -243,22 +213,25 @@
                     .ForEach(i => i.IsSelected = false);
 
                 this.longListSelector.SelectedItem = null;
-            }
+            }*/
         }
 
         protected void SetDataSource(IEnumerable<T> items)
         {
+			// TODO: call platform-dependant versions.
+			/*
             if (this.longListSelector != null)
             {
                 this.longListSelector.ItemsSource = this.GetData(items);
             }
+            */
         }
 
         protected async Task RefreshData()
         {
             this.Items.Clear();
             this.SelectedItems.Clear();
-            this.SetValue(SelectedItemProperty, null);
+			SelectedItem = null;
 
             try
             {
