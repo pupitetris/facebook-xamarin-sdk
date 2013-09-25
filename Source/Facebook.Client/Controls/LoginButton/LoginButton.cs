@@ -158,6 +158,22 @@
 
         #region Implementation
 
+		public LoginButton () : base ()
+		{
+			this.InitUI ();
+
+			if (this.CurrentSession != null) {
+				if (this.FetchUserInfo) {
+					this.LogIn ().ContinueWith (t => {
+						this.UpdateButtonCaption ();
+					});
+				}
+			} else {
+				this.CurrentUser = null;
+				this.UpdateButtonCaption ();
+			}
+		}
+
         private async void OnLoginButtonClicked(object sender, EventArgs e)
         {
             if (this.CurrentSession == null)

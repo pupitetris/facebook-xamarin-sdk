@@ -20,7 +20,7 @@ namespace Facebook.Client.Controls
 		private UILabel Label;
 		private UIButton Button;
 
-		public LoginButton () : base ()
+		private void InitUI ()
 		{
 			this.ParentUI = null;
 
@@ -74,17 +74,6 @@ namespace Facebook.Client.Controls
 			this.Label.Frame = new RectangleF (image.Size.Width - ButtonPaddingWidth - 1, -1, 
 			                                   width - (image.Size.Width - ButtonPaddingWidth) - ButtonEndCapWidth, image.Size.Width);
 			this.BackgroundColor = UIColor.Clear;
-
-			if (this.CurrentSession != null) {
-				if (this.FetchUserInfo) {
-					this.LogIn ().ContinueWith (t => {
-						this.UpdateButtonCaption ();
-					});
-				}
-			} else {
-				this.CurrentUser = null;
-				this.UpdateButtonCaption ();
-			}
 		}
 
 		private SizeF SizeThatFits () {
