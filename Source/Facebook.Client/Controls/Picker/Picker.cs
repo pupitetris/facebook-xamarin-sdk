@@ -220,6 +220,13 @@
             this.LoadCompleted.RaiseEvent(this, new DataReadyEventArgs<T>(this.Items.ToList()));
         }
 
+		protected void RefreshDataAsync ()
+		{
+			Task.Run (async delegate {
+				await this.RefreshData ();
+			});
+		}
+
         protected void OnLoadCompleted(DataReadyEventArgs<T> args)
         {
             this.LoadCompleted.RaiseEvent(this, args);
