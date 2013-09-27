@@ -24,7 +24,7 @@ namespace Facebook.Client.Controls
 		    return new RoutedEvent (this.Name, this.RoutingStrategy, this.HandlerType, ownerType);
 		}
 
-		public override void ToString ()
+		public override string ToString ()
 		{
 		    // TODO: code string representation.
 			return base.ToString ();
