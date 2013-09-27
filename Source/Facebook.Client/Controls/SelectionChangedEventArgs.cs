@@ -9,8 +9,20 @@ namespace Facebook.Client.Controls
     {
 		public IList AddedItems { get; private set; }
 		public IList RemovedItems { get; private set; }
-	
-		protected virtual void InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+
+		public SelectionChangedEventArgs(RoutedEvent id, IList removedItems, IList addedItems): base (id)
+		{
+			this.RemovedItems = removedItems;
+			this.AddedItems = addedItems;
+		}
+
+		public SelectionChangedEventArgs(IList removedItems, IList addedItems): base ()
+		{
+			this.RemovedItems = removedItems;
+			this.AddedItems = addedItems;
+		}
+
+		protected override void InvokeEventHandler(Delegate genericHandler, Object genericTarget)
 		{
 	    	var deleg = (SelectionChangedEventHandler) genericHandler;
 	    	deleg (genericTarget, this);
