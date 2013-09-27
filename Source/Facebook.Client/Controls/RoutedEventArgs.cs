@@ -18,6 +18,10 @@ namespace Facebook.Client.Controls
 			}
 		}
 
+		public RoutedEventArgs(): base ()
+		{
+		}
+
 		public RoutedEventArgs(RoutedEvent routedEvent) : base ()
 		{
 		    this.RoutedEvent = routedEvent;
@@ -35,6 +39,7 @@ namespace Facebook.Client.Controls
 		    deleg (genericTarget, this);
 		}
 
-		protected virtual void OnSetSource(Object source);
+		protected virtual void OnSetSource(Object source) {
+		}
    	}
 }
