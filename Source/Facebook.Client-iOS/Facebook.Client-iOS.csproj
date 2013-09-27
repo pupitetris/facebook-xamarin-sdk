@@ -102,6 +102,7 @@
     <Folder Include="Facebook.Client-iOS\Extensions\" />
     <Folder Include="Facebook.Client\Controls\ProfilePicture\" />
     <Folder Include="Facebook.Client\Controls\Picker\" />
+    <Folder Include="Facebook.Client-iOS\Controls\Picker\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -201,6 +202,8 @@
     <Compile Include="..\Facebook.Client\Controls\SelectionChangedEventArgs.cs">
       <Link>Facebook.Client\Controls\SelectionChangedEventArgs.cs</Link>
     </Compile>
+    <Compile Include="Facebook.Client-iOS\Controls\Picker\Picker.cs" />
+    <Compile Include="Facebook.Client-iOS\Controls\Picker\PickerSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
