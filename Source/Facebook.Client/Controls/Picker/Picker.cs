@@ -25,9 +25,15 @@
         /// </summary>
         public Picker()
         {
+			this.InitPicker ();
+			this.InitUI ();
+        }
+
+		private void InitPicker () {
+			this.SelectionMode = DefaultSelectionMode;
 			Items = new ObservableCollection<T> ();
 			SelectedItems = new ObservableCollection<T> ();
-        }
+		}
 
         #region Events
 
@@ -103,37 +109,13 @@
 
         #region Implementation
 
-        /// <summary>
-        /// Invoked whenever application code or internal processes (such as a rebuilding layout pass) call ApplyTemplate. In simplest 
-        /// terms, this means the method is called just before a UI element displays in your app. Override this method to influence the 
-        /// default post-template logic of a class. 
-        /// </summary>
-		/*
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            this.longListSelector = GetTemplateChild(Picker<T>.PartListSelector) as LongListSelector;
-            if (this.longListSelector != null)
-            {
-                this.longListSelector.SelectionChanged += this.OnSelectionChanged;
-
-                if (System.ComponentModel.DesignerProperties.IsInDesignTool)
-                {
-                    this.SetDataSource(this.GetDesignTimeData());
-                }
-            }
-        }*/
-
-		// TODO: implement platform-dependent parts.
-        protected void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.SelectionMode == PickerSelectionMode.None)
             {
                 return;
             }
 
-			/*
             if (this.longListSelector == null)
             {
                 return;
@@ -143,7 +125,6 @@
             {
                 return;
             }
-            */
 
             IList<object> removedItems;
             IList<object> addedItems;
@@ -151,25 +132,23 @@
             if (this.SelectionMode == PickerSelectionMode.Single)
             {
                 // Single Selection mode
-                removedItems = ((IList<object>)e.RemovedItems)
-                                    .Where(item => item != null)
-                                    .ToList();
-                addedItems = ((IList<object>)e.AddedItems)
-                                    .Where(item => item != null)
-                                    .ToList();                
+				var selectedItem = this.longListSelector.SelectedItem as PickerItem<T>;
+				addedItems = selectedItem.IsSelected ? new object[0] : new object[] { selectedItem };
+				removedItems = selectedItem.IsSelected ? new object[] { selectedItem } : new object[0];
             }
             else
             {
-				/*
                 // Multiple selection mode
-                var selectedItem = this.longListSelector.SelectedItem as PickerItem<T>;
-                addedItems = selectedItem.IsSelected ? new object[0] : new object[] { selectedItem };
-                removedItems = selectedItem.IsSelected ? new object[] { selectedItem } : new object[0];
-
-                // Reset selected item to null (no selection)
-                this.longListSelector.SelectedItem = null;
-                */
+				removedItems = ((IList<object>)e.RemovedItems)
+					.Where(item => item != null)
+						.ToList();
+				addedItems = ((IList<object>)e.AddedItems)
+					.Where(item => item != null)
+						.ToList();                
             }
+
+			// Reset selected item to null (no selection)
+			this.longListSelector.SelectedItem = null;
 
             foreach (var item in removedItems)
             {
@@ -190,41 +169,35 @@
 
             this.SelectionChanged.RaiseEvent(
                 this, 
-                new SelectionChangedEventArgs(removedItems.Select(item => ((PickerItem<T>)item).Item).ToList(), addedItems.Select(item => ((PickerItem<T>)item).Item).ToList()));
+                new SelectionChangedEventArgs(removedItems.Select(item => ((PickerItem<T>)item).Item).ToList(), 
+			                              addedItems.Select(item => ((PickerItem<T>)item).Item).ToList()));
         }
 
-		// TODO: platform-dependant version.
         protected void ClearSelection()
         {
             this.SelectedItems.Clear();
 
-			/*
-            if (this.longListSelector != null && this.longListSelector.ItemsSource != null)
-            {
-                var source = this.longListSelector.ItemsSource as IEnumerable<PickerItem<T>>;
-                if (source == null)
-                {
-                    source = (this.longListSelector.ItemsSource as IEnumerable<AlphaKeyGroup<PickerItem<T>>>)
-                        .SelectMany(i => i);
-                }
+			if (this.longListSelector != null && this.longListSelector.ItemsSource != null) {
+				var source = this.longListSelector.ItemsSource as IEnumerable<PickerItem<T>>;
+				if (source == null) {
+					source = (this.longListSelector.ItemsSource as IEnumerable<AlphaKeyGroup<PickerItem<T>>>)
+                        .SelectMany (i => i);
+				}
 
-                source.Where(f => f.IsSelected)
-                    .ToList()
-                    .ForEach(i => i.IsSelected = false);
+				source.Where (f => f.IsSelected)
+                    .ToList ()
+                    .ForEach (i => i.IsSelected = false);
 
-                this.longListSelector.SelectedItem = null;
-            }*/
+				this.longListSelector.SelectedItem = null;
+			}
         }
 
         protected void SetDataSource(IEnumerable<T> items)
         {
-			// TODO: call platform-dependant versions.
-			/*
             if (this.longListSelector != null)
             {
-                this.longListSelector.ItemsSource = this.GetData(items);
+                this.longListSelector.ItemsSource = (List<T>) this.GetData(items);
             }
-            */
         }
 
         protected async Task RefreshData()
@@ -245,11 +218,6 @@
 
             this.SetDataSource(this.Items);
             this.LoadCompleted.RaiseEvent(this, new DataReadyEventArgs<T>(this.Items.ToList()));
-        }
-
-        protected virtual IEnumerable<T> GetDesignTimeData()
-        {
-            return null;
         }
 
         protected void OnLoadCompleted(DataReadyEventArgs<T> args)
