@@ -103,6 +103,8 @@
     <Folder Include="Facebook.Client\Controls\ProfilePicture\" />
     <Folder Include="Facebook.Client\Controls\Picker\" />
     <Folder Include="Facebook.Client-iOS\Controls\Picker\" />
+    <Folder Include="Facebook.Client\Controls\PlacePicker\" />
+    <Folder Include="Facebook.Client-iOS\Controls\PlacePicker\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -204,6 +206,13 @@
     </Compile>
     <Compile Include="Facebook.Client-iOS\Controls\Picker\Picker.cs" />
     <Compile Include="Facebook.Client-iOS\Controls\Picker\PickerSource.cs" />
+    <Compile Include="..\Facebook.Client\Controls\PlacePicker\PlacePicker.cs">
+      <Link>Facebook.Client\Controls\PlacePicker\PlacePicker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphPlace.cs">
+      <Link>Facebook.Client\GraphPlace.cs</Link>
+    </Compile>
+    <Compile Include="Facebook.Client-iOS\Controls\PlacePicker\PlacePicker.cs" />
     <Compile Include="..\Facebook.Client\Controls\PlacePicker\Geolocator.cs">
       <Link>Facebook.Client\Controls\PlacePicker\Geolocator.cs</Link>
     </Compile>
