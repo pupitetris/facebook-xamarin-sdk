@@ -224,18 +224,17 @@
                 var currentLocation = this.TrackLocation ? await this.GetCurrentLocation() : new LocationCoordinate(this.Latitude, this.Longitude);
                 FacebookClient facebookClient = new FacebookClient(this.AccessToken);
 
-                dynamic parameters = new ExpandoObject();
-                parameters.type = "place";
-                parameters.center = currentLocation.ToString();
-                parameters.distance = this.RadiusInMeters;
-                parameters.fields = this.DisplayFields;
-                if (!string.IsNullOrWhiteSpace(this.SearchText))
-                {
-                    parameters.q = this.SearchText;
-                }
+				var parameters = new Dictionary<string, object> ();
+				parameters ["type"] = "place";
+				parameters ["center"] = currentLocation.ToString ();
+				parameters ["distance"] = this.RadiusInMeters;
+				parameters ["fields"] = this.DisplayFields;
+				if (!string.IsNullOrWhiteSpace (this.SearchText)) {
+					parameters ["q"] = this.SearchText;
+				}
 
-                dynamic placesTaskResult = await facebookClient.GetTaskAsync("/search", parameters);
-                var data = (IEnumerable<dynamic>)placesTaskResult.data;
+                var placesTaskResult = await facebookClient.GetTaskAsync("/search", parameters);
+				var data = (IEnumerable<object>)placesTaskResult ["data"];
                 foreach (var item in data)
                 {
                     var place = new GraphPlace(item);
@@ -257,7 +256,7 @@
                 }
 
                 this.cancelGeopositionOperation = new CancellationTokenSource(3000);
-                var position = await this.geoLocator.GetGeopositionAsync(new TimeSpan(0, 1, 0), new TimeSpan(0, 0, 0, 10)).AsTask(this.cancelGeopositionOperation.Token);
+                var position = await this.geoLocator.GetGeopositionAsync(10000, this.cancelGeopositionOperation.Token);
                 return new LocationCoordinate(position.Coordinate.Latitude, position.Coordinate.Longitude);
             }
             catch (System.UnauthorizedAccessException)

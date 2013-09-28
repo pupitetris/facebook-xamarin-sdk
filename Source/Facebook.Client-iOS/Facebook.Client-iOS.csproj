@@ -85,6 +85,9 @@
     <Reference Include="Facebook">
       <HintPath>..\..\..\facebook-csharp-sdk\bin\Debug\MonoTouch\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\Components\xamarin.mobile-0.7\lib\ios\Xamarin.Mobile.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Auth.iOS">
       <HintPath>..\Components\xamarin.auth-1.2.1\lib\ios\Xamarin.Auth.iOS.dll</HintPath>
     </Reference>
@@ -237,6 +240,11 @@
     <XamarinComponentReference Include="xamarin.auth">
       <InstallationInProgress>False</InstallationInProgress>
       <Version>1.2.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.mobile">
+      <InstallationInProgress>False</InstallationInProgress>
+      <Version>0.7</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
