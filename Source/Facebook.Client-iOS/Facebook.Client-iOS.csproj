@@ -216,6 +216,9 @@
     <Compile Include="..\Facebook.Client\Controls\PlacePicker\Geolocator.cs">
       <Link>Facebook.Client\Controls\PlacePicker\Geolocator.cs</Link>
     </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\PlacePicker\LocationCoordinate.cs">
+      <Link>Facebook.Client\Controls\PlacePicker\LocationCoordinate.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
