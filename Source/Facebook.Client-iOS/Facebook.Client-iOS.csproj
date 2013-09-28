@@ -209,7 +209,7 @@
     <Compile Include="..\Facebook.Client\Controls\PlacePicker\PlacePicker.cs">
       <Link>Facebook.Client\Controls\PlacePicker\PlacePicker.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphPlace.cs">
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\GraphPlace.cs">
       <Link>Facebook.Client\GraphPlace.cs</Link>
     </Compile>
     <Compile Include="Facebook.Client-iOS\Controls\PlacePicker\PlacePicker.cs" />
