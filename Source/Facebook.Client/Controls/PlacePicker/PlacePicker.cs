@@ -21,7 +21,7 @@
         private static readonly bool DefaultDisplayProfilePictures = true;
         private static readonly string DefaultSearchText = "";
         private static readonly int DefaultRadiusInMeters = 1000;
-        private static readonly int DefaultResultsLimit = 100;
+        //private static readonly int DefaultResultsLimit = 100;
         private static readonly bool DefaultTrackLocation = false;
         private static readonly double DefaultLatitude = 51.494338;
         private static readonly double DefaultLongitude = -0.176759;
@@ -194,7 +194,7 @@
 	                    this.geoLocator.MovementThreshold = DefaultMovementThreshold;
 	                    this.geoLocator.DesiredAccuracy = PositionAccuracy.High;
 	                }
-
+				
 	                this.geoLocator.PositionChanged += this.OnPositionChanged;
 	            }
 	            else if (this.geoLocator != null)
@@ -212,7 +212,7 @@
 
         #region Implementation
 
-        private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        private async void OnPositionChanged(object sender, PositionChangedEventArgs args)
         {
             await this.RefreshData();
         }
@@ -233,7 +233,7 @@
 					parameters ["q"] = this.SearchText;
 				}
 
-                var placesTaskResult = await facebookClient.GetTaskAsync("/search", parameters);
+				Dictionary<string, object> placesTaskResult = (Dictionary<string, object>) await facebookClient.GetTaskAsync("/search", parameters);
 				var data = (IEnumerable<object>)placesTaskResult ["data"];
                 foreach (var item in data)
                 {
