@@ -7,6 +7,9 @@ namespace Facebook.Client.Controls
 {
 	public class PositionChangedEventArgs: PositionEventArgs
 	{
+		public PositionChangedEventArgs (Position position): base (position)
+		{
+		}
 	}
 
 	public class Geocoordinate: Position
@@ -31,12 +34,12 @@ namespace Facebook.Client.Controls
 	public class Geolocator: Xamarin.Geolocation.Geolocator
 	{
 		public double MovementThreshold { get; set; }
-		public PositionAccuracy DesiredAccuracy { get; set; }
+		public new PositionAccuracy DesiredAccuracy { get; set; }
 		private bool desiredAccuracyInMetersIsSet = false;
 		public Nullable<uint> DesiredAccuracyInMeters {
 			get {
 				if (this.desiredAccuracyInMetersIsSet) {
-					return base.DesiredAccuracy;
+					return (uint) base.DesiredAccuracy;
 				}
 				return null; 
 			}
@@ -50,13 +53,25 @@ namespace Facebook.Client.Controls
 			}
 		}
 
+		public new event EventHandler<PositionChangedEventArgs> PositionChanged;
+
+		protected virtual void OnPositionChanged (object sender, PositionChangedEventArgs e)
+		{
+			EventHandler<PositionChangedEventArgs> handler = PositionChanged;
+			if (handler != null) {
+				handler (sender, e);
+			}
+		}
+
 		public Geolocator (): base ()
 		{
+			base.PositionChanged += (object sender, PositionEventArgs e) => 
+				this.OnPositionChanged (sender, (PositionChangedEventArgs) e);
 		}
 
 		public async Task<Geoposition> GetGeopositionAsync(int timeout, CancellationToken cancelToken) 
 		{
-			Geocoordinate coordinate = await this.GetPositionAsync (timeout, cancelToken);
+			Geocoordinate coordinate = (Geocoordinate) await this.GetPositionAsync (timeout, cancelToken);
 			return new Geoposition (coordinate);
 		}
 	}
