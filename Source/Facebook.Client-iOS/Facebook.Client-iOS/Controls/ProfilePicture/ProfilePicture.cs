@@ -11,6 +11,9 @@ namespace Facebook.Client.Controls
 		private static float ScreenScaleFactor = 0.0f;
 		private HttpHelper connection = null;
 
+		protected static UIImage DefaultImage = null;
+		protected static UIImage DefaultSquareImage = null;
+
 		/// <summary>
 		/// Initializes a new instance of the ProfilePicture class.
 		/// </summary>
@@ -59,6 +62,20 @@ namespace Facebook.Client.Controls
 			this.LoadPicture ();
 		}
 
+		protected UIImage GetDefaultImage () {
+			if (this.CropMode == CropMode.Square) {
+				if (DefaultSquareImage == null) {
+					DefaultSquareImage = UIImage.FromBundle (ProfilePicture.GetBlankProfilePictureUrl (true));
+				}
+				return DefaultSquareImage;
+			} else {
+				if (DefaultImage == null) {
+					DefaultImage = UIImage.FromBundle (ProfilePicture.GetBlankProfilePictureUrl (false));
+				}
+				return DefaultImage;
+			}
+		}
+
 		private void RefreshImage () {
 			if (!string.IsNullOrEmpty (this.ProfileId)) {
 				if (this.connection != null) {
@@ -82,7 +99,7 @@ namespace Facebook.Client.Controls
 				});
 
 			} else {
-				this.ImageView.Image = UIImage.FromBundle (this.ImageSource);
+				this.ImageView.Image = this.GetDefaultImage ();
 				this.EnsureImageViewContentMode ();
 			}
 		}
