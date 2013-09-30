@@ -32,6 +32,12 @@ namespace BasicAppiOS
 			MyLoginButton.ParentUI = this;
 			MyLoginButton.SessionStateChanged += this.OnSessionStateChanged;
 			MyLoginButton.ApplicationId = "98206523058";
+			MyLoginButton.FetchUserInfo = true;
+			MyLoginButton.UserInfoChanged += (object sender, UserInfoChangedEventArgs e) => {
+				this.CheckInButton.Hidden = false;
+				this.WelcomeLabel.Hidden = false;
+				this.WelcomeLabel.Text = "Welcome, " + e.User.Name + "!";
+			};
 			LoginButtonCont.AddSubview (MyLoginButton);
 			MyLoginButton.Frame = new RectangleF (0, 0, LoginButtonCont.Frame.Width, LoginButtonCont.Frame.Height);
 
@@ -49,6 +55,8 @@ namespace BasicAppiOS
 				msg = "Closed.";
 				this.MyProfilePicture.AccessToken = null;
 				this.MyProfilePicture.ProfileId = null;
+				this.WelcomeLabel.Hidden = true;
+				this.CheckInButton.Hidden = true;
 				break;
 			case FacebookSessionState.ClosedLoginFailed:
 				msg = "Logout failed.";

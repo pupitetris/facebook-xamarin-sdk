@@ -13,10 +13,16 @@ namespace BasicAppiOS
 	partial class BasicApp_iOSViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton CheckInButton { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView LoginButtonCont { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIView ProfilePictureCont { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel WelcomeLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -28,6 +34,16 @@ namespace BasicAppiOS
 			if (ProfilePictureCont != null) {
 				ProfilePictureCont.Dispose ();
 				ProfilePictureCont = null;
+			}
+
+			if (WelcomeLabel != null) {
+				WelcomeLabel.Dispose ();
+				WelcomeLabel = null;
+			}
+
+			if (CheckInButton != null) {
+				CheckInButton.Dispose ();
+				CheckInButton = null;
 			}
 		}
 	}
