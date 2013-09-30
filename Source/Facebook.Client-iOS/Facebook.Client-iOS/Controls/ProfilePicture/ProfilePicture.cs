@@ -91,6 +91,7 @@ namespace Facebook.Client.Controls
 
 									this.ImageView.Image = UIImage.LoadFromData (data);
 									this.EnsureImageViewContentMode ();
+									this.OnPictureLoaded (this, new PictureLoadedEventArgs (this.ImageView.Image));
 								}
 							}
 						});

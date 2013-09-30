@@ -4,6 +4,15 @@
     using System.Globalization;
     using System.Windows;
 
+	public class PictureLoadedEventArgs: EventArgs
+	{
+		public object Image { get; private set; }
+
+		public PictureLoadedEventArgs (object image): base () {
+			this.Image = image;
+		}
+	}
+
     /// <summary>
     /// Shows the profile picture for an object such as a user, place, or event.
     /// </summary>
@@ -104,6 +113,16 @@
 
         #region Implementation
 		
+		public event EventHandler<PictureLoadedEventArgs> PictureLoaded;
+
+		protected virtual void OnPictureLoaded (object sender, PictureLoadedEventArgs e)
+		{
+			EventHandler<PictureLoadedEventArgs> handler = PictureLoaded;
+			if (handler != null) {
+				handler (sender, e);
+			}
+		}
+
         private void LoadPicture()
         {
             string profilePictureUrl;
