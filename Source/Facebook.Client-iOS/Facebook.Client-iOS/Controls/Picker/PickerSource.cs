@@ -34,19 +34,18 @@ namespace Facebook.Client.Controls
 
 		private SelectionChangedEventArgs CreateSelectionChangedEvent ()
 		{
-			var added = new List<PickerItem<T>> ();
-			var removed = new List<PickerItem<T>> ();
-			var eventArgs = new SelectionChangedEventArgs (removed, added);
+			var added = new List<object> ();
+			var removed = new List<object> ();
 
 			foreach (KeyValuePair<int, object> kv in this.Selection) {
 				PickerItem<T> item = (PickerItem<T>) kv.Value;
 				if (item.IsSelected) {
-					added.Add (item);
+					added.Add (kv.Value);
 				} else {
-					removed.Add (item);
+					removed.Add (kv.Value);
 				}
 			}
-			return eventArgs;
+			return new SelectionChangedEventArgs (removed, added);
 		}
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
