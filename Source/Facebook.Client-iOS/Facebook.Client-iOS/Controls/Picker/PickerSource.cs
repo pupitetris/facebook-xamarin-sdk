@@ -40,9 +40,9 @@ namespace Facebook.Client.Controls
 			foreach (KeyValuePair<int, object> kv in this.Selection) {
 				PickerItem<T> item = (PickerItem<T>) kv.Value;
 				if (item.IsSelected) {
-					added.Add (kv.Value);
-				} else {
 					removed.Add (kv.Value);
+				} else {
+					added.Add (kv.Value);
 				}
 			}
 			return new SelectionChangedEventArgs (removed, added);
@@ -52,7 +52,7 @@ namespace Facebook.Client.Controls
 		{
 			this._selectedItem = this.Items [indexPath.Row];
 			PickerItem<T> item = (PickerItem<T>) this._selectedItem;
-			item.IsSelected = true;
+			item.IsSelected = false;
 			this.Selection [indexPath.Row] = this._selectedItem;
 			this.Picker.OnSelectionChanged (this.Picker, this.CreateSelectionChangedEvent ());
 		}
@@ -61,7 +61,7 @@ namespace Facebook.Client.Controls
 		{
 			this._selectedItem = this.Items [indexPath.Row];
 			PickerItem<T> item = (PickerItem<T>) this._selectedItem;
-			item.IsSelected = false;
+			item.IsSelected = true;
 			this.Selection [indexPath.Row] = this._selectedItem;
 			this.Picker.OnSelectionChanged (this.Picker, this.CreateSelectionChangedEvent ());
 		}
