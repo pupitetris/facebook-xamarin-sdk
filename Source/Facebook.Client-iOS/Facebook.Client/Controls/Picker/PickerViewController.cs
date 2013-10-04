@@ -25,12 +25,7 @@ namespace Facebook.Client.Controls
 			this.Title = this.GetTitle ();
 
 			this.PickerView = this.CreatePickerView ();
-
-			this.PickerView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
-
-			var screen = UIScreen.MainScreen.ApplicationFrame;
-			var size = this.PickerView.SizeThatFits (SizeF.Empty);
-			this.PickerView.Frame = new RectangleF (0, screen.Height - size.Height, size.Width, size.Height);
+			this.PickerView.Frame = this.View.Bounds;
 
 			this.View.AddSubview (this.PickerView);
 		}
