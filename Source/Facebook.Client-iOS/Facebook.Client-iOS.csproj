@@ -85,11 +85,11 @@
     <Reference Include="Facebook">
       <HintPath>..\..\..\facebook-csharp-sdk\bin\Debug\MonoTouch\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Auth.iOS">
-      <HintPath>..\Components\xamarin.auth-1.2.1\lib\ios\Xamarin.Auth.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Mobile">
       <HintPath>..\Components\xamarin.mobile-0.7\lib\ios\Xamarin.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth.iOS">
+      <HintPath>..\Components\xamarin.auth-1.2.1\lib\ios\Xamarin.Auth.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,8 @@
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\PlacePicker\LocationCoordinate.cs">
       <Link>Facebook.Client\Controls\PlacePicker\LocationCoordinate.cs</Link>
     </Compile>
+    <Compile Include="Facebook.Client\Controls\Picker\PickerViewController.cs" />
+    <Compile Include="Facebook.Client\Controls\PlacePicker\PlacePickerViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
