@@ -82,9 +82,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="Facebook">
-      <HintPath>..\..\..\facebook-csharp-sdk\bin\Debug\MonoTouch\Facebook.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Mobile">
       <HintPath>..\Components\xamarin.mobile-0.7\lib\ios\Xamarin.Mobile.dll</HintPath>
     </Reference>
@@ -249,5 +246,11 @@
       <Version>0.7</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\facebook-csharp-sdk\Source\Facebook\Facebook-MonoTouch.csproj">
+      <Project>{76C5904B-0A5A-4E05-B36B-0C7C123495B0}</Project>
+      <Name>Facebook-MonoTouch</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

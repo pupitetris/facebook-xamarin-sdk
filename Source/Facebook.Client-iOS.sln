@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Client-iOS", "Face
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicApp-iOS", "..\Samples\BasicApp-iOS\BasicApp-iOS.csproj", "{F41143F4-1232-4F0A-AA0D-1DEE3DB0C811}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook-MonoTouch", "..\facebook-csharp-sdk\Source\Facebook\Facebook-MonoTouch.csproj", "{76C5904B-0A5A-4E05-B36B-0C7C123495B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -15,6 +17,18 @@ Global
 		AppStore|iPhone = AppStore|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Release|iPhone.Build.0 = Release|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{76C5904B-0A5A-4E05-B36B-0C7C123495B0}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{C3939C90-1679-4928-A296-794CDC64EFC3}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{C3939C90-1679-4928-A296-794CDC64EFC3}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
 		{C3939C90-1679-4928-A296-794CDC64EFC3}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
