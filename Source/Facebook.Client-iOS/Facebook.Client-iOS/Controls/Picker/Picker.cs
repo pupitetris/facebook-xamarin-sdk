@@ -40,18 +40,14 @@ namespace Facebook.Client.Controls
 			this.AddSubview (this.Spinner);
 		}
 
-		public abstract UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath);
-		/*
+		protected void RefreshUI ()
 		{
-			UITableViewCell cell = tableView.DequeueReusableCell (this.CellIdentifier);
+			InvokeOnMainThread (() => {
+				this.TableView.ReloadData ();
+			});
+		}
 
-			// if there are no cells to reuse, create a new one
-			if (cell == null)
-				cell = this.Picker.CreateCell ();
-			cell = new UITableViewCell (UITableViewCellStyle.Default, this.CellIdentifier);
-			cell.TextLabel.Text = Items[indexPath.Row];
-			return cell;
-		}*/
+		public abstract UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath);
 	}
 }
 
