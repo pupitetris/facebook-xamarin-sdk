@@ -6,10 +6,11 @@ namespace Facebook.Client.Controls
 {
 	public abstract class PickerViewController: UIViewController
 	{
-		protected UIView PickerView;
+		public UIView PickerView { get; private set; }
 
 		public PickerViewController (): base ()
 		{
+			this.PickerView = this.CreatePickerView ();
 		}
 
 		protected abstract UIView CreatePickerView ();
@@ -24,7 +25,6 @@ namespace Facebook.Client.Controls
 			base.ViewDidLoad ();
 			this.Title = this.GetTitle ();
 
-			this.PickerView = this.CreatePickerView ();
 			this.PickerView.Frame = this.View.Bounds;
 
 			this.View.AddSubview (this.PickerView);
