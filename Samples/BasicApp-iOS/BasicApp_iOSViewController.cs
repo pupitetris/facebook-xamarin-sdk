@@ -46,7 +46,6 @@ namespace BasicAppiOS
 			MyProfilePicture.Frame = new RectangleF (0, 0, this.ProfilePictureCont.Frame.Width, this.ProfilePictureCont.Frame.Height);
 
 			this.CheckInButton.TouchUpInside += (object sender, EventArgs e) => {
-				Console.WriteLine ("click");
 				var vc = new PlacePickerViewController (this.MyLoginButton.CurrentSession.AccessToken);
 				this.PresentViewController (vc, true, null);
 			};
