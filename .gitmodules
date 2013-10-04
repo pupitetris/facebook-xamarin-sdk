@@ -2,3 +2,7 @@
 	path = facebook-winclient-sdk
 	url = https://github.com/pupitetris/facebook-winclient-sdk.git
 	branch = xamarin
+[submodule "facebook-csharp-sdk"]
+	path = facebook-csharp-sdk
+	url = https://github.com/pupitetris/facebook-csharp-sdk.git
+	branch = xamarin-gui
