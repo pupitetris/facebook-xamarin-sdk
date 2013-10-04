@@ -233,7 +233,13 @@
 					parameters ["q"] = this.SearchText;
 				}
 
-				Dictionary<string, object> placesTaskResult = (Dictionary<string, object>) await facebookClient.GetTaskAsync("/search", parameters);
+				IDictionary<string, object> placesTaskResult = null;
+				try {
+					placesTaskResult = (IDictionary<string, object>) await facebookClient.GetTaskAsync("/search", parameters);
+				} catch (Exception e) {
+					throw new Exception (e.Message, e);
+				}
+
 				var data = (IEnumerable<object>)placesTaskResult ["data"];
                 foreach (var item in data)
                 {
