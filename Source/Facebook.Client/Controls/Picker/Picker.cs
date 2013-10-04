@@ -196,8 +196,9 @@
         {
             if (this.longListSelector != null)
             {
-                this.longListSelector.ItemsSource = (List<T>) this.GetData(items);
-            }
+                this.longListSelector.ItemsSource = (List<PickerItem<T>>) this.GetData(items);
+				this.RefreshUI ();
+			}
         }
 
         protected async Task RefreshData()
