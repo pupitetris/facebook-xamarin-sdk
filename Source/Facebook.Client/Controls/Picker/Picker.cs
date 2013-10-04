@@ -30,9 +30,9 @@
         }
 
 		private void InitPicker () {
-			this.SelectionMode = DefaultSelectionMode;
 			Items = new ObservableCollection<T> ();
 			SelectedItems = new ObservableCollection<T> ();
+			this.SelectionMode = DefaultSelectionMode;
 		}
 
         #region Events
