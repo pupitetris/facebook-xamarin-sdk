@@ -19,19 +19,15 @@ This is the recommended layout so that the paths inside the projects work withou
 		git clone --branch dev --recurse-submodules https://github.com/pupitetris/facebook-xamarin-sdk.git
 		cd facebook-xamarin-sdk/facebook-winclient-sdk
 		git branch xamarin
+		cd ../facebook-csharp-sdk
+		git branch xamarin-gui
 
 
 Building
 --------
 
-A better build procedure is pending.
-
-* Using Xamarin Studio, open <tt>FB/facebook-csharp-sdk/Source/Facebook-MonoTouch.sln</tt>
-* Build the Debug profile.
 * Open <tt>FB/facebook-xamarin-sdk/Source/Facebook.Client-iOS.sln</tt>
 * Build and run under the Debug profile.
-
-The current layout is considered suboptimal since the Facebook.Client-iOS project has a DLL reference with a relative path pointing to <tt>../facebook-csharp-sdk/bin/Debug/MonoTouch/Facebook.dll</tt>. facebook-csharp-sdk should probably be a submodule of facebook-xamarin-sdk and be included in the solution.
 
 That's it!
 
