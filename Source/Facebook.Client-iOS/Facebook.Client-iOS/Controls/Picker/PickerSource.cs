@@ -26,6 +26,9 @@ namespace Facebook.Client.Controls
 
 		public override int RowsInSection (UITableView tableView, int section)
 		{
+			if (this.Items == null) {
+				return 0;
+			}
 			return this.Items.Count;
 		}
 
