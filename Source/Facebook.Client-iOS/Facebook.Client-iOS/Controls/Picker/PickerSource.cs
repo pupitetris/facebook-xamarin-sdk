@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
@@ -8,20 +9,14 @@ namespace Facebook.Client.Controls
 	public class PickerSource<T> : UITableViewSource
 		where T: class
 	{
-		private List<T> Items;
+		private List<PickerItem<T>> Items;
 		private Dictionary<int, object> Selection;
 		private Picker<T> Picker;
 
-		public PickerSource (Picker<T> picker, IList<T> items = null)
+		public PickerSource (Picker<T> picker)
 		{
 			this.Picker = picker;
-			this.Items = (List<T>) items;
-
-			if (items != null && items.Count > 0) {
-				this.Selection = new Dictionary<int, object> (items.Count);
-			} else {
-				this.Selection = new Dictionary<int, object> ();
-			}
+			this.Selection = new Dictionary<int, object> ();
 		}
 
 		public override int RowsInSection (UITableView tableView, int section)
@@ -86,9 +81,12 @@ namespace Facebook.Client.Controls
 			} 
 		}
 
-		public List<T> ItemsSource { 
+		public IList ItemsSource { 
 			get { return this.Items; }
-			set { this.Items = value; this.SelectedItem = null; }
+			set { 
+				this.Items = (List<PickerItem<T>>) value; 
+				this.SelectedItem = null; 
+			}
 		}
 	}
 }
