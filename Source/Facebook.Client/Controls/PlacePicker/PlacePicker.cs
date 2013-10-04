@@ -288,7 +288,7 @@
 
         protected override IList GetData(IEnumerable<GraphPlace> items)
         {
-            return items.Select(item => new PickerItem<GraphPlace>(this, item)).ToList();
+			return items.Select(item => new PickerItem<GraphPlace>(this, item)).ToList();
         }
 
         #endregion Implementation
