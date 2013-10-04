@@ -38,12 +38,18 @@ namespace BasicAppiOS
 				this.WelcomeLabel.Hidden = false;
 				this.WelcomeLabel.Text = "Welcome, " + e.User.Name + "!";
 			};
-			LoginButtonCont.AddSubview (MyLoginButton);
-			MyLoginButton.Frame = new RectangleF (0, 0, LoginButtonCont.Frame.Width, LoginButtonCont.Frame.Height);
+			this.LoginButtonCont.AddSubview (MyLoginButton);
+			MyLoginButton.Frame = new RectangleF (0, 0, this.LoginButtonCont.Frame.Width, this.LoginButtonCont.Frame.Height);
 
 			MyProfilePicture = new ProfilePicture ();
-			ProfilePictureCont.AddSubview (MyProfilePicture);
-			MyProfilePicture.Frame = new RectangleF (0, 0, ProfilePictureCont.Frame.Width, ProfilePictureCont.Frame.Height);
+			this.ProfilePictureCont.AddSubview (MyProfilePicture);
+			MyProfilePicture.Frame = new RectangleF (0, 0, this.ProfilePictureCont.Frame.Width, this.ProfilePictureCont.Frame.Height);
+
+			this.CheckInButton.TouchUpInside += (object sender, EventArgs e) => {
+				Console.WriteLine ("click");
+				var vc = new PlacePickerViewController (this.MyLoginButton.CurrentSession.AccessToken);
+				this.PresentViewController (vc, true, null);
+			};
 		}
 
 		private void OnSessionStateChanged(object sender, Facebook.Client.Controls.SessionStateChangedEventArgs e)
