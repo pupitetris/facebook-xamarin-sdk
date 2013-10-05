@@ -47,6 +47,25 @@ namespace Facebook.Client.Controls
 			});
 		}
 
+		protected void SetSelectionModeUI ()
+		{
+			switch (this.SelectionMode) {
+			case PickerSelectionMode.Multiple:
+				this.TableView.AllowsMultipleSelection = true;
+				this.TableView.AllowsSelection = true;
+				break;
+			case PickerSelectionMode.Single:
+				this.TableView.AllowsMultipleSelection = false;
+				this.TableView.AllowsSelection = true;
+				break;
+			case PickerSelectionMode.None:
+				this.TableView.AllowsSelection = false;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException ("SelectionMode");
+			}
+		}
+
 		public abstract UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath);
 	}
 }

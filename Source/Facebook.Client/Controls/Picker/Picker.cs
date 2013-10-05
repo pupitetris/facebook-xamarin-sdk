@@ -72,6 +72,7 @@
 			get { return this._selectionMode; } 
 			set { 
 				this._selectionMode = value;
+				this.SetSelectionModeUI ();
 				this.ClearSelection ();
 			}
 		}
