@@ -62,8 +62,8 @@ namespace Facebook.Client.Controls
 			this.LoadPicture ();
 		}
 
-		protected UIImage GetDefaultImage () {
-			if (this.CropMode == CropMode.Square) {
+		protected static UIImage GetDefaultImage (CropMode crop_mode) {
+			if (crop_mode == CropMode.Square) {
 				if (DefaultSquareImage == null) {
 					DefaultSquareImage = UIImage.FromBundle (ProfilePicture.GetBlankProfilePictureUrl (true));
 				}
@@ -100,7 +100,7 @@ namespace Facebook.Client.Controls
 				});
 
 			} else {
-				this.ImageView.Image = this.GetDefaultImage ();
+				this.ImageView.Image = ProfilePicture.GetDefaultImage (this.CropMode);
 				this.EnsureImageViewContentMode ();
 			}
 		}
