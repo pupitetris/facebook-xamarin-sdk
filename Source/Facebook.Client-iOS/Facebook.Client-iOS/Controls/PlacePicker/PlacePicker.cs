@@ -28,18 +28,20 @@ namespace Facebook.Client.Controls
 			// if there are no cells to reuse, create a new one
 			if (cell == null) {
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, CellIdentifier);
-				GraphPlace place = Items [indexPath.Row];
-				cell.TextLabel.Text = place.Name;
-				cell.DetailTextLabel.Text = string.Format ("{0} • {1} were here".t (), place.Category, place.WereHereCount);
-
-				cell.ImageView.Image = PlacePicker.GetDefaultImage ();
-				ProfilePicture pict = new ProfilePicture ();
-				pict.PictureLoaded += (object sender, PictureLoadedEventArgs e) => {
-					cell.ImageView.Image = (UIImage)e.Image;
-				};
-				pict.AccessToken = this.AccessToken;
-				pict.ProfileId = place.Id;
 			}
+
+			GraphPlace place = Items [indexPath.Row];
+			cell.TextLabel.Text = place.Name;
+			cell.DetailTextLabel.Text = string.Format ("{0} • {1} were here".t (), place.Category, place.WereHereCount);
+
+			cell.ImageView.Image = PlacePicker.GetDefaultImage ();
+			ProfilePicture pict = new ProfilePicture ();
+			pict.PictureLoaded += (object sender, PictureLoadedEventArgs e) => {
+				cell.ImageView.Image = (UIImage)e.Image;
+			};
+			pict.AccessToken = this.AccessToken;
+			pict.ProfileId = place.Id;
+
 			return cell;
 		}
 	}
