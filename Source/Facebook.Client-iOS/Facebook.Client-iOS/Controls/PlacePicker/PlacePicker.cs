@@ -1,5 +1,7 @@
 using System;
 using System.Drawing;
+using System.Globalization;
+
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
 
@@ -8,6 +10,16 @@ namespace Facebook.Client.Controls
 	public partial class PlacePicker
 	{
 		private static readonly string CellIdentifier = "FacebookClient.PlacePicker";
+
+		protected static UIImage DefaultImage = null;
+
+		protected static UIImage GetDefaultImage () {
+			if (DefaultImage == null) {
+				DefaultImage = UIImage.FromBundle (string.Format (CultureInfo.InvariantCulture, "/Images/{0}", "FBPlacePickerViewGenericPlace.png"));
+			}
+			return DefaultImage;
+		}
+
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
@@ -19,8 +31,12 @@ namespace Facebook.Client.Controls
 				GraphPlace place = Items [indexPath.Row];
 				cell.TextLabel.Text = place.Name;
 				//cell.DetailTextLabel.Text = place.
+
+				cell.ImageView.Image = PlacePicker.GetDefaultImage ();
 				ProfilePicture pict = new ProfilePicture ();
-				pict.PictureLoaded += (object sender, PictureLoadedEventArgs e) => cell.ImageView.Image = (UIImage) e.Image;
+				pict.PictureLoaded += (object sender, PictureLoadedEventArgs e) => {
+					cell.ImageView.Image = (UIImage)e.Image;
+				};
 				pict.AccessToken = this.AccessToken;
 				pict.ProfileId = place.Id;
 			}
