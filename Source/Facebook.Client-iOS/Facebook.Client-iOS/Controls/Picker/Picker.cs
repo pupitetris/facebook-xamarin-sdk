@@ -14,6 +14,8 @@ namespace Facebook.Client.Controls
 		private UIActivityIndicatorView Spinner;
 		private PickerSource<T> longListSelector;
 
+		protected Dictionary<string, UIImage> ImageCache;
+
 		public Picker (RectangleF frame): base (frame)
 		{
 			this.InitPicker ();
@@ -27,6 +29,8 @@ namespace Facebook.Client.Controls
 
 		protected void InitUI (RectangleF frame)
 		{
+			this.ImageCache = new Dictionary<string, UIImage> ();
+
 			this.longListSelector = new PickerSource<T> (this);
 			this.TableView = new UITableView (frame);
 			this.TableView.AutoresizingMask = UIViewAutoresizing.FlexibleDimensions;
@@ -45,6 +49,7 @@ namespace Facebook.Client.Controls
 		protected void RefreshUI ()
 		{
 			InvokeOnMainThread (() => {
+				this.ImageCache.Clear ();
 				this.TableView.ReloadData ();
 			});
 		}
