@@ -30,7 +30,7 @@ namespace Facebook.Client.Controls
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, CellIdentifier);
 				GraphPlace place = Items [indexPath.Row];
 				cell.TextLabel.Text = place.Name;
-				//cell.DetailTextLabel.Text = place.
+				cell.DetailTextLabel.Text = string.Format ("{0} • {1} were here".t (), place.Category, place.WereHereCount);
 
 				cell.ImageView.Image = PlacePicker.GetDefaultImage ();
 				ProfilePicture pict = new ProfilePicture ();
