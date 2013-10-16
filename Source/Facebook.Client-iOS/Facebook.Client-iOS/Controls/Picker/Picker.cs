@@ -38,6 +38,8 @@ namespace Facebook.Client.Controls
 			// We want user to be able to scroll while we load.
 			this.Spinner.UserInteractionEnabled = false;
 			this.AddSubview (this.Spinner);
+
+			this.SetSelectionModeUI ();
 		}
 
 		protected void RefreshUI ()
@@ -49,6 +51,10 @@ namespace Facebook.Client.Controls
 
 		protected void SetSelectionModeUI ()
 		{
+			if (this.TableView == null) {
+				return;
+			}
+
 			switch (this.SelectionMode) {
 			case PickerSelectionMode.Multiple:
 				this.TableView.AllowsMultipleSelection = true;
