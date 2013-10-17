@@ -221,6 +221,13 @@
     </Compile>
     <Compile Include="Facebook.Client\Controls\Picker\PickerViewController.cs" />
     <Compile Include="Facebook.Client\Controls\PlacePicker\PlacePickerViewController.cs" />
+    <Compile Include="..\Facebook.Client\ImageLoader.cs">
+      <Link>Facebook.Client\ImageLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\Facebook.Client\LRUCache.cs">
+      <Link>Facebook.Client\LRUCache.cs</Link>
+    </Compile>
+    <Compile Include="Facebook.Client-iOS\ImageLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
