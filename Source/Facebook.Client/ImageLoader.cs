@@ -166,7 +166,7 @@ namespace Facebook.Client
 		/// <returns>
 		/// If the image has already been downloaded, or is in the cache, this will return the image as a UIImage.
 		/// </returns>
-		public static object DefaultRequestImage (Uri uri, IImageUpdated notify)
+		public static T DefaultRequestImage (Uri uri, IImageUpdated notify)
 		{
 			if (DefaultLoader == null)
 				DefaultLoader = new ImageLoader<T> (50, 4*1024*1024);
@@ -185,7 +185,7 @@ namespace Facebook.Client
 		/// <returns>
 		/// If the image has already been downloaded, or is in the cache, this will return the image as a UIImage.
 		/// </returns>
-		public object RequestImage (Uri uri, IImageUpdated notify)
+		public T RequestImage (Uri uri, IImageUpdated notify)
 		{
 			T ret;
 			
