@@ -246,9 +246,6 @@
                     var place = new GraphPlace(item);
                     if (this.OnDataItemRetrieved(new DataItemRetrievedEventArgs<GraphPlace>(place), e => e.Exclude))
                     {
-						Console.Write (place.ToString ());
-						Console.Write (" ");
-						Console.WriteLine (place.Name);
                         this.Items.Add(place);
                     }
                 }
