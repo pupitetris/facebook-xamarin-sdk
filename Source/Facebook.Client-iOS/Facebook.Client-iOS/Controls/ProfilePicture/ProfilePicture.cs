@@ -5,11 +5,12 @@ using System.Drawing;
 
 namespace Facebook.Client.Controls
 {
-	public partial class ProfilePicture: UIView
+	public partial class ProfilePicture: UIView, IImageUpdated
 	{
 		private UIImageView ImageView;
 		private static float ScreenScaleFactor = 0.0f;
-		private HttpHelper connection = null;
+
+		private static ImageLoader<UIImage> Loader = new ImageLoader<UIImage> (250, 4*1024*1024);
 
 		protected static UIImage DefaultImage = null;
 		protected static UIImage DefaultSquareImage = null;
@@ -76,29 +77,25 @@ namespace Facebook.Client.Controls
 			}
 		}
 
+		// Required by IImageUpdated
+		void IImageUpdated.UpdatedImage (Uri uri)
+		{
+			if (uri != null)
+				this.SetImage (uri);
+		}
+
+		private void SetImage (Uri uri) {
+			UIImage img = ProfilePicture.Loader.RequestImage (uri, this);
+			if (img != null) {
+				this.ImageView.Image = img;
+				this.EnsureImageViewContentMode ();
+				this.OnPictureLoaded (this, new PictureLoadedEventArgs (this.ImageView.Image));
+			}
+		}
+
 		private void RefreshImage () {
 			if (!string.IsNullOrEmpty (this.ProfileId)) {
-				if (this.connection != null) {
-					this.connection.CancelAsync ();
-				}
-
-				this.connection = new HttpHelper (this.ImageSource);
-				this.connection.OpenReadTaskAsync ().ContinueWith (t => {
-					if (t.IsCompleted) {
-						InvokeOnMainThread(() => {
-							using (var stream = t.Result) {
-								using (var data = NSData.FromStream (stream)) {
-
-									this.ImageView.Image = UIImage.LoadFromData (data);
-									this.EnsureImageViewContentMode ();
-									this.OnPictureLoaded (this, new PictureLoadedEventArgs (this.ImageView.Image));
-								}
-							}
-						});
-					}
-					this.connection = null;
-				});
-
+				this.SetImage (new Uri (this.ImageSource));
 			} else {
 				this.ImageView.Image = ProfilePicture.GetDefaultImage (this.CropMode);
 				this.EnsureImageViewContentMode ();
