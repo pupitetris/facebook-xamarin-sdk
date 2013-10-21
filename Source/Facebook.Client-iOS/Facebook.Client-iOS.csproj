@@ -105,6 +105,8 @@
     <Folder Include="Facebook.Client-iOS\Controls\Picker\" />
     <Folder Include="Facebook.Client\Controls\PlacePicker\" />
     <Folder Include="Facebook.Client-iOS\Controls\PlacePicker\" />
+    <Folder Include="Facebook.Client\Controls\FriendPicker\" />
+    <Folder Include="Facebook.Client-iOS\Controls\FriendPicker\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -228,6 +230,20 @@
       <Link>Facebook.Client\LRUCache.cs</Link>
     </Compile>
     <Compile Include="Facebook.Client-iOS\ImageLoader.cs" />
+    <Compile Include="..\Facebook.Client\Controls\FriendPicker\FriendPicker.cs">
+      <Link>Facebook.Client\Controls\FriendPicker\FriendPicker.cs</Link>
+    </Compile>
+    <Compile Include="Facebook.Client-iOS\Controls\FriendPicker\FriendPicker.cs" />
+    <Compile Include="Facebook.Client-iOS\Controls\FriendPicker\FriendPickerViewController.cs" />
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\FriendPicker\FriendPickerDisplayOrder.cs">
+      <Link>Facebook.Client\Controls\FriendPicker\FriendPickerDisplayOrder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\FriendPicker\FriendPickerSortOrder.cs">
+      <Link>Facebook.Client\Controls\FriendPicker\FriendPickerSortOrder.cs</Link>
+    </Compile>
+    <Compile Include="..\Facebook.Client\Controls\FriendPicker\FriendPickerItem.cs">
+      <Link>Facebook.Client\Controls\FriendPicker\FriendPickerItem.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\FBLoginViewButton.png" />
