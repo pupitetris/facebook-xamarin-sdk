@@ -47,10 +47,10 @@ namespace BasicAppiOS
 			this.ProfilePictureCont.AddSubview (MyProfilePicture);
 			MyProfilePicture.Frame = new RectangleF (0, 0, this.ProfilePictureCont.Frame.Width, this.ProfilePictureCont.Frame.Height);
 
-			this.CheckInButton.TouchUpInside += (object sender, EventArgs e) => {
+			this.CheckInButton.TouchUpInside += (object s, EventArgs e) => {
 				var placePickerVC = new PlacePickerViewController (this.MyLoginButton.CurrentSession.AccessToken);
 				placePickerVC.PlacePicker.SelectionMode = PickerSelectionMode.Single;
-				placePickerVC.PlacePicker.SelectionChanged += (object s, SelectionChangedEventArgs evt) => {
+				placePickerVC.PlacePicker.SelectionChanged += (object sender, SelectionChangedEventArgs evt) => {
 					if (evt.AddedItems.Count > 0) {
 						GraphPlace place = (GraphPlace) evt.AddedItems[0];
 						this.WelcomeLabel.Text = string.Format ("You checked in at {0}.", place.Name);
@@ -60,8 +60,12 @@ namespace BasicAppiOS
 				this.NavigationController.PushViewController (placePickerVC, true);
 			};
 
-			this.SelectFriendsButton.TouchUpInside += (object sender, EventArgs e) => {
-
+			this.SelectFriendsButton.TouchUpInside += (object s, EventArgs e) => {
+				var friendPickerVC = new FriendPickerViewController (this.MyLoginButton.CurrentSession.AccessToken);
+				friendPickerVC.FriendPicker.SelectionChanged += (object sender, SelectionChangedEventArgs evt) => {
+					Console.WriteLine ("Selected");
+				};
+				this.NavigationController.PushViewController (friendPickerVC, true);
 			};
 		}
 
