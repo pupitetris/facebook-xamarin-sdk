@@ -219,8 +219,8 @@
     <Compile Include="..\..\facebook-winclient-sdk\Source\Facebook.Client\Controls\PlacePicker\LocationCoordinate.cs">
       <Link>Facebook.Client\Controls\PlacePicker\LocationCoordinate.cs</Link>
     </Compile>
-    <Compile Include="Facebook.Client\Controls\Picker\PickerViewController.cs" />
-    <Compile Include="Facebook.Client\Controls\PlacePicker\PlacePickerViewController.cs" />
+    <Compile Include="Facebook.Client-iOS\Controls\Picker\PickerViewController.cs" />
+    <Compile Include="Facebook.Client-iOS\Controls\PlacePicker\PlacePickerViewController.cs" />
     <Compile Include="..\Facebook.Client\ImageLoader.cs">
       <Link>Facebook.Client\ImageLoader.cs</Link>
     </Compile>
