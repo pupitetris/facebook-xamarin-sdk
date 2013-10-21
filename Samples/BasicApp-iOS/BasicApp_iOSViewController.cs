@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using Facebook.Client;
 using Facebook.Client.Controls;
 
 namespace BasicAppiOS
@@ -49,10 +50,24 @@ namespace BasicAppiOS
 				var placePickerVC = new PlacePickerViewController (this.MyLoginButton.CurrentSession.AccessToken);
 				placePickerVC.PlacePicker.SelectionMode = PickerSelectionMode.Single;
 				placePickerVC.PlacePicker.SelectionChanged += (object s, SelectionChangedEventArgs evt) => {
-					Console.WriteLine (evt.AddedItems[0]);
+					if (evt.AddedItems.Count > 0) {
+						GraphPlace place = (GraphPlace) evt.AddedItems[0];
+						this.WelcomeLabel.Text = string.Format ("You checked in at {0}.", place.Name);
+						this.NavigationController.PopViewControllerAnimated (true);
+					}
 				};
-				this.PresentViewController (placePickerVC, true, null);
+				this.NavigationController.PushViewController (placePickerVC, true);
 			};
+		}
+
+		public override void ViewWillAppear (bool animated) {
+			base.ViewWillAppear (animated);
+			this.NavigationController.SetNavigationBarHidden (true, animated);
+		}
+
+		public override void ViewWillDisappear (bool animated) {
+			base.ViewWillDisappear (animated);
+			this.NavigationController.SetNavigationBarHidden (false, animated);
 		}
 
 		private void OnSessionStateChanged(object sender, Facebook.Client.Controls.SessionStateChangedEventArgs e)
