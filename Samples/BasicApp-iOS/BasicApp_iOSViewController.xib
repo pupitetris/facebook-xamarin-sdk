@@ -9,6 +9,7 @@
                 <outlet property="CheckInButton" destination="XLP-nk-vQu" id="DYN-4h-nxC"/>
                 <outlet property="LoginButtonCont" destination="10" id="18"/>
                 <outlet property="ProfilePictureCont" destination="15" id="19"/>
+                <outlet property="SelectFriendsButton" destination="zhy-WP-yrK" id="nzi-ue-kz6"/>
                 <outlet property="WelcomeLabel" destination="Ihn-qL-z4H" id="e9p-yA-HrM"/>
                 <outlet property="view" destination="6" id="7"/>
             </connections>
@@ -19,16 +20,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view opaque="NO" contentMode="scaleToFill" id="10">
-                    <rect key="frame" x="20" y="268" width="280" height="65"/>
+                    <rect key="frame" x="20" y="256" width="280" height="65"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="" id="15">
-                    <rect key="frame" x="60" y="21" width="200" height="240"/>
+                    <rect key="frame" x="60" y="8" width="200" height="240"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ihn-qL-z4H">
-                    <rect key="frame" x="20" y="341" width="280" height="21"/>
+                    <rect key="frame" x="20" y="321" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
@@ -47,10 +48,16 @@
                     </attributedString>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XLP-nk-vQu">
-                    <rect key="frame" x="20" y="374" width="280" height="32"/>
+                    <rect key="frame" x="20" y="350" width="280" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Check in..."/>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zhy-WP-yrK">
+                    <rect key="frame" x="20" y="390" width="280" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Select friends..."/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

@@ -36,6 +36,7 @@ namespace BasicAppiOS
 			MyLoginButton.FetchUserInfo = true;
 			MyLoginButton.UserInfoChanged += (object sender, UserInfoChangedEventArgs e) => {
 				this.CheckInButton.Hidden = false;
+				this.SelectFriendsButton.Hidden = false;
 				this.WelcomeLabel.Hidden = false;
 				this.WelcomeLabel.Text = "Welcome, " + e.User.Name + "!";
 			};
@@ -57,6 +58,10 @@ namespace BasicAppiOS
 					}
 				};
 				this.NavigationController.PushViewController (placePickerVC, true);
+			};
+
+			this.SelectFriendsButton.TouchUpInside += (object sender, EventArgs e) => {
+
 			};
 		}
 

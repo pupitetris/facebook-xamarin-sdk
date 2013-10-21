@@ -22,10 +22,23 @@ namespace BasicAppiOS
 		MonoTouch.UIKit.UIView ProfilePictureCont { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton SelectFriendsButton { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel WelcomeLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (SelectFriendsButton != null) {
+				SelectFriendsButton.Dispose ();
+				SelectFriendsButton = null;
+			}
+
+			if (CheckInButton != null) {
+				CheckInButton.Dispose ();
+				CheckInButton = null;
+			}
+
 			if (LoginButtonCont != null) {
 				LoginButtonCont.Dispose ();
 				LoginButtonCont = null;
@@ -39,11 +52,6 @@ namespace BasicAppiOS
 			if (WelcomeLabel != null) {
 				WelcomeLabel.Dispose ();
 				WelcomeLabel = null;
-			}
-
-			if (CheckInButton != null) {
-				CheckInButton.Dispose ();
-				CheckInButton = null;
 			}
 		}
 	}
