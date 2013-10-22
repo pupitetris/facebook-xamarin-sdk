@@ -68,14 +68,14 @@
 
         #endregion ProfileId
 
-	#region DisplayOrder
+		#region DisplayOrder
 
         /// <summary>
         /// Controls whether to display first name or last name first.
         /// </summary>
 		public FriendPickerDisplayOrder DisplayOrder { get; set; }
 
-	#endregion DisplayOrder
+		#endregion DisplayOrder
 
         #region SortOrder
 
