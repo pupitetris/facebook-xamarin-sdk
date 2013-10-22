@@ -10,6 +10,9 @@ namespace Facebook.Client.Controls
 		where T: class
 	{
 		private IList Items;
+		private List<PickerItem<T>> SimpleItems;
+		private List<AlphaKeyGroup<PickerItem<T>>> GroupItems;
+
 		private Dictionary<int, object> Selection;
 		private Picker<T> Picker;
 
@@ -19,12 +22,45 @@ namespace Facebook.Client.Controls
 			this.Selection = new Dictionary<int, object> ();
 		}
 
+		public override int NumberOfSections (UITableView tableView)
+		{
+			if (this.Items == null) {
+				return 0;
+			}
+
+			if (this.SimpleItems != null) {
+				return 1;
+			}
+
+			return this.GroupItems.Count;
+		}
+
 		public override int RowsInSection (UITableView tableView, int section)
 		{
 			if (this.Items == null) {
 				return 0;
 			}
-			return this.Items.Count;
+
+			if (this.SimpleItems != null) {
+				return this.Items.Count;
+			}
+
+			return this.GroupItems [section].Count;
+		}
+
+		public override string[] SectionIndexTitles (UITableView tableView)
+		{
+			if (this.GroupItems == null) {
+				return null;
+			}
+			return this.GroupItems.ConvertAll (x => x.Key).ToArray ();
+		}
+
+		internal PickerItem<T> GetItem (NSIndexPath indexPath) {
+			if (this.SimpleItems != null) {
+				return this.SimpleItems [indexPath.Row];
+			}
+			return this.GroupItems [indexPath.Section] [indexPath.Row];
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
@@ -50,9 +86,8 @@ namespace Facebook.Client.Controls
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			var items = (List<PickerItem<T>>)this.Items;
-			this._selectedItem = items [indexPath.Row];
-			PickerItem<T> item = (PickerItem<T>) this._selectedItem;
+			PickerItem<T> item = this.GetItem (indexPath);
+			this._selectedItem = item;
 			item.IsSelected = false;
 			this.Selection [indexPath.Row] = this._selectedItem;
 			this.Picker.OnSelectionChanged (this.Picker, this.CreateSelectionChangedEvent ());
@@ -60,9 +95,8 @@ namespace Facebook.Client.Controls
 
 		public override void RowDeselected (UITableView tableView, NSIndexPath indexPath)
 		{
-			var items = (List<PickerItem<T>>)this.Items;
-			this._selectedItem = items [indexPath.Row];
-			PickerItem<T> item = (PickerItem<T>) this._selectedItem;
+			PickerItem<T> item = this.GetItem (indexPath);
+			this._selectedItem = item;
 			item.IsSelected = true;
 			this.Selection [indexPath.Row] = this._selectedItem;
 			this.Picker.OnSelectionChanged (this.Picker, this.CreateSelectionChangedEvent ());
@@ -84,8 +118,10 @@ namespace Facebook.Client.Controls
 
 		public IList ItemsSource { 
 			get { return this.Items; }
-			set { 
-				this.Items = value; 
+			set {
+				this.SimpleItems = value as List<PickerItem<T>>;
+				this.GroupItems = value as List<AlphaKeyGroup<PickerItem<T>>>;
+				this.Items = value;
 				this.SelectedItem = null; 
 			}
 		}
