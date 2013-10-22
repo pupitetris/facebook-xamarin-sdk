@@ -29,7 +29,7 @@ namespace Facebook.Client.Controls
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, CellIdentifier);
 			}
 
-			GraphPlace place = Items [indexPath.Row];
+			GraphPlace place = this.longListSelector.GetItem (indexPath).Item;
 			cell.TextLabel.Text = place.Name;
 			cell.DetailTextLabel.Text = string.Format ("{0} • {1} were here".t (), place.Category, place.WereHereCount);
 
