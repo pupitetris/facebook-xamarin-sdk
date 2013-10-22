@@ -12,7 +12,7 @@ namespace Facebook.Client.Controls
 	{
 		public UITableView TableView { get; private set; }
 		private UIActivityIndicatorView Spinner;
-		private PickerSource<T> longListSelector;
+		protected PickerSource<T> longListSelector;
 
 		protected Dictionary<string, UIImage> ImageCache;
 
