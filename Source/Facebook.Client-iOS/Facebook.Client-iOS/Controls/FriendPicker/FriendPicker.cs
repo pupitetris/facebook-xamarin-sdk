@@ -65,21 +65,13 @@ namespace Facebook.Client.Controls
 			}
 			cell.TextLabel.AttributedText = astr;
 
-			string user_picture_url = user.ProfilePictureUrl.ToString ();
-			if (this.ImageCache.ContainsKey (user_picture_url)) {
-				cell.ImageView.Image = this.ImageCache [user_picture_url];
-			} else {
-				cell.ImageView.Image = FriendPicker.GetDefaultImage ();
-				ProfilePicture pict = new ProfilePicture ();
-				pict.PictureLoaded += (object sender, PictureLoadedEventArgs e) => {
-					cell.ImageView.Image = (UIImage)e.Image;
-					if (!this.ImageCache.ContainsKey (user_picture_url)) {
-						this.ImageCache.Add (user_picture_url, (UIImage) e.Image);
-					}
-				};
-				pict.AccessToken = this.AccessToken;
-				pict.ProfileId = user.Id;
-			}
+			cell.ImageView.Image = FriendPicker.GetDefaultImage ();
+			ProfilePicture pict = new ProfilePicture ();
+			pict.PictureLoaded += (object sender, PictureLoadedEventArgs e) => {
+				cell.ImageView.Image = (UIImage)e.Image;
+			};
+			pict.AccessToken = this.AccessToken;
+			pict.ProfileId = user.Id;
 
 			return cell;
 		}
