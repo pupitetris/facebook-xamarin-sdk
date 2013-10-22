@@ -90,6 +90,7 @@ namespace BasicAppiOS
 				this.MyProfilePicture.ProfileId = null;
 				this.WelcomeLabel.Hidden = true;
 				this.CheckInButton.Hidden = true;
+				this.SelectFriendsButton.Hidden = true;
 				break;
 			case FacebookSessionState.ClosedLoginFailed:
 				msg = "Logout failed.";
