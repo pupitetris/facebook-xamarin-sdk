@@ -31,7 +31,7 @@ namespace Facebook.Client.Controls
 				cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier);
 			}
 
-			GraphUser user = Items [indexPath.Row];
+			GraphUser user = this.longListSelector.GetItem (indexPath).Item;
 
 			var bold = new UIStringAttributes {
 				Font = UIFont.BoldSystemFontOfSize (UIFont.LabelFontSize)
@@ -41,12 +41,28 @@ namespace Facebook.Client.Controls
 				Font = UIFont.SystemFontOfSize (UIFont.LabelFontSize)
 			};
 
-			var str = string.Format ("{0} {1} {2}", user.FirstName, user.MiddleName, user.LastName);
-			var namelen = user.FirstName.Length + 1 + user.MiddleName.Length;
-			var astr = new NSMutableAttributedString (str);
-			astr.SetAttributes (bold.Dictionary, new NSRange (0, namelen));
-			astr.SetAttributes (regular.Dictionary, new NSRange (namelen, str.Length - namelen));
+			var str = string.Format ("{0}{1}{2}", 
+			                         (user.FirstName == null)? "": user.FirstName + " ", 
+			                         (user.MiddleName == null)? "": user.MiddleName + " ",
+			                         user.LastName ?? "");
 
+
+			int namelen = 0;
+			if (user.MiddleName != null) {
+				namelen += user.MiddleName.Length;
+			}
+			if (user.FirstName != null) {
+				namelen += user.FirstName.Length;
+				if (user.MiddleName != null) {
+					namelen ++;
+				}
+			}
+
+			var astr = new NSMutableAttributedString (str);
+			if (namelen > 0) {
+				astr.SetAttributes (bold.Dictionary, new NSRange (0, namelen));
+				astr.SetAttributes (regular.Dictionary, new NSRange (namelen, str.Length - namelen));
+			}
 			cell.TextLabel.AttributedText = astr;
 
 			string user_picture_url = user.ProfilePictureUrl.ToString ();
