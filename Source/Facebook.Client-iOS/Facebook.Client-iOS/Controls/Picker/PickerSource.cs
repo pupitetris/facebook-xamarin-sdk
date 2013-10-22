@@ -9,7 +9,7 @@ namespace Facebook.Client.Controls
 	public class PickerSource<T> : UITableViewSource
 		where T: class
 	{
-		private List<PickerItem<T>> Items;
+		private IList Items;
 		private Dictionary<int, object> Selection;
 		private Picker<T> Picker;
 
@@ -50,7 +50,8 @@ namespace Facebook.Client.Controls
 
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-			this._selectedItem = this.Items [indexPath.Row];
+			var items = (List<PickerItem<T>>)this.Items;
+			this._selectedItem = items [indexPath.Row];
 			PickerItem<T> item = (PickerItem<T>) this._selectedItem;
 			item.IsSelected = false;
 			this.Selection [indexPath.Row] = this._selectedItem;
@@ -59,7 +60,8 @@ namespace Facebook.Client.Controls
 
 		public override void RowDeselected (UITableView tableView, NSIndexPath indexPath)
 		{
-			this._selectedItem = this.Items [indexPath.Row];
+			var items = (List<PickerItem<T>>)this.Items;
+			this._selectedItem = items [indexPath.Row];
 			PickerItem<T> item = (PickerItem<T>) this._selectedItem;
 			item.IsSelected = true;
 			this.Selection [indexPath.Row] = this._selectedItem;
@@ -83,7 +85,7 @@ namespace Facebook.Client.Controls
 		public IList ItemsSource { 
 			get { return this.Items; }
 			set { 
-				this.Items = (List<PickerItem<T>>) value; 
+				this.Items = value; 
 				this.SelectedItem = null; 
 			}
 		}

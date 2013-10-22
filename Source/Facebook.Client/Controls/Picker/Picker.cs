@@ -197,7 +197,7 @@
         {
             if (this.longListSelector != null)
             {
-                this.longListSelector.ItemsSource = (List<PickerItem<T>>) this.GetData(items);
+				this.longListSelector.ItemsSource = this.GetData (items);
 				this.RefreshUI ();
 			}
         }
