@@ -28,6 +28,8 @@ Some of the most important items that are pending:
 * We are still using a Web Client for initial authentication.
 * Debugging.
 	* If you login and out two or three times, an unexpected page comes up and the GUI ends up at a dead end.
+	* Pickers are not rendered with the correct frame size. When embedded inside a NavigationController, you can't see the last item.
+* Check that the controls work alright in all orientations.
 * Documentation.
 * All of the Android controls.
 
